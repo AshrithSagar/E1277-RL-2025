@@ -1,0 +1,23 @@
+\documentclass[tikz,12pt]{standalone}
+\usepackage{amsmath}
+
+\begin{document}
+\begin{tikzpicture}
+
+    % Axes
+    \draw[->, gray] (0,0) -- (12,0) node[right] {x};
+    \draw[->, gray] (0,0) -- (0,6) node[above] {y};
+
+    % Function J
+    \draw[thick, domain=0:10] plot (\x, {2*sin(0.5*\x r) + 3}) node[right] {\( J \)};
+
+    % Function J + re and J - re
+    \draw[dotted, blue] plot[domain=0:10] (\x, {2*sin(0.5*\x r) + 3 + 0.5}) node[right] {\( J + r e \)};
+    \draw[dotted, blue] plot[domain=0:10] (\x, {2*sin(0.5*\x r) + 3 - 0.5}) node[right] {\( J - r e \)};
+
+    % Displacement r
+    \draw[|<->|, gray] (9, {2*sin(0.5*9 r) + 3}) -- (9, {2*sin(0.5*9 r) + 3 + 0.5}) node[midway, right] {\( r \)};
+    \draw[|<->|, gray] (9, {2*sin(0.5*9 r) + 3}) -- (9, {2*sin(0.5*9 r) + 3 - 0.5}) node[midway, right] {\( r \)};
+
+\end{tikzpicture}
+\end{document}
