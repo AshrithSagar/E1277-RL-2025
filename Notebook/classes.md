@@ -1,0 +1,50 @@
+# E1277-RL: Reinforcement Learning
+
+## Classes
+
+- 2025-01-02
+  - Tab, Laptop
+  - Introduction
+- 2025-01-07
+  - Tab
+  - Learning theory
+- 2025-01-09
+  - Tab
+  - Multi-armed bandits
+- 2025-01-16
+  - Tab
+  - Markov decision process
+- 2025-01-18
+  - Tab
+  - Proof
+  - Examples
+    - Chess game
+    - Network queue
+  - Todo
+- 2025-01-21
+  - Tab, ~Laptop
+  - Stochastic shortest path problems
+- 2025-01-26
+  - Missed
+  - Tutorial
+- 2025-01-30
+  - Laptop
+  - Stochastic shortest path problems
+  - Mappings $T, T_\mu$
+  - Bellman equation
+  - Monotonicity lemma
+- 2025-02-01
+  - Laptop
+  - Proposition-1b
+  - Proposition-2a, b, c
+  - Nightmare proof
+- 2025-02-02
+  - ~~Quiz-1~~
+  - Tutorial?
+- 2025-02-04
+- 2025-02-06
+- 2025-02-11
+- 2025-02-13
+- 2025-02-16
+  - MidTerm-1
+- 
