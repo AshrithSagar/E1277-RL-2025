@@ -38,10 +38,10 @@
   - Proposition-1b
   - Proposition-2a, b, c
   - Nightmare proof
-- 2025-02-02
-  - ~~Quiz-1~~
-  - Tutorial?
 - 2025-02-04
+  - Brower's fixed point theorem
+  - Proposition-3
+  - Grid world problem
 - 2025-02-06
 - 2025-02-11
 - 2025-02-13
