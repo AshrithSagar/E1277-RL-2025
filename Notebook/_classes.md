@@ -41,8 +41,17 @@
 - 2025-02-04
   - Brower's fixed point theorem
   - Proposition-3
+  - Numerical procedures for solving MDP
+  - Value iteration
   - Grid world problem
 - 2025-02-06
+  - Value iteration
+  - Policy iteration
+  - Modified policy iteration
+  - Multi-stage look ahead policy iteration
+- 2025-02-08
+  - Tutorial
+  - Stochastic shortest path problems
 - 2025-02-11
 - 2025-02-13
 - 2025-02-16
