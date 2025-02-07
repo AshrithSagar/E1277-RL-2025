@@ -4,3 +4,13 @@ Give an example of a MDP such that even if the policy is improper, the expected 
 (Hint: consider MDP with number of states countably infinite, and for the simplicity assume that there is only one starting state).
 
 \subsection*{Solution}
+
+Consider an MDP with a countably infinite number of states, with a terminal state \( s_0 \) and a starting state \( s_1 \).
+Assume a discount factor \( \gamma = 1 \) and a deterministic policy, where the agent moves to the next state in the sequence \( s_1, s_2, \dots \) with a reward of \( 1/2^i \) at state \( s_i \).
+This policy is improper as the agent never reaches the terminal state \( s_0 \).
+We can see that the total reward for the trajectory \( s_1, s_2, \dots \) is given by
+\[
+    \sum_{i=1}^{\infty} \frac{1}{2^i} = 1
+\]
+which is a finite value, and thereby the expected total reward is bounded.
+Hence, even if the policy is improper, the expected total reward can be bounded for certain MDPs.
