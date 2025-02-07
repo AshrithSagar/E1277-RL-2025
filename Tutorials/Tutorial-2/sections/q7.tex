@@ -4,3 +4,17 @@ Does the given sequence converge \( a_{n} = \{1 / n\}, \ n \in N \)?
 And if yes, then where?
 
 \subsection*{Solution}
+
+Given the sequence \( a_{n} = \{1 / n\}, \ n \in \mathbb{N} \), we can check if this sequence is a Cauchy sequence.
+A sequence of real numbers \( x_1, x_2, x_3, \dots \) is said to be a Cauchy sequence if for every \( \epsilon > 0 \), there exists an \( N \in \mathbb{N} \) such that for all \( m, n > N \), we have \( \vert x_m - x_n \vert < \epsilon \).
+We can see that the limit of the sequence is zero, i.e., \( \lim_{n \to \infty} a_n = 0 \).
+Let us consider \( m > n > N \), then we have
+\[
+    \vert a_m - a_n \vert
+    = \left\vert \frac{1}{m} - \frac{1}{n} \right\vert
+    = \left( \frac{1}{n} - \frac{1}{m} \right)
+    < \frac{1}{n}
+    < \frac{1}{N}
+\]
+i.e., for any \( \epsilon > 0 \), we can choose \( N = \lceil 1/\epsilon \rceil \) such that for all \( m, n > N \), we have \( \vert a_m - a_n \vert < \epsilon \).
+Since \( \mathbb{R} \) is complete, the sequence \( a_n = \{1 / n\}, \ n \in \mathbb{N} \) converges to zero.
