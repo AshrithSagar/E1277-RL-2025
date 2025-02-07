@@ -1,3 +1,35 @@
 \section*{Question 3}
 
+A farmer annually producing \( X_{k} \) units of a certain crop stores \( \left(1-U_{k}\right) X_{k} \) units of his production, where \( 0 \leq U_{k} \leq 1 \), and invests the remaining \( U_{k} X_{k} \) units, thus increasing the next year's production to a level \( X_{k+1} \) given by
+\[
+    X_{k+1} = X_{k}+W_{k} U_{k} X_{k}, k = 0,1, \dots, N-1
+\]
+The scalars \( W_{k} \) are independent random variables with identical probability distributions that do not depend either on \( X_{k} \) or \( U_{k} \).
+Furthermore, \( \mathbb{E}\left[W_{k}\right]= \) \( \bar{W} \geq 0 \).
+The problem is to find the optimal investment policy that maximizes the total expected product stored over N years.
+\[
+    \mathbb{E}_{w_{k}, k = 0,1,\dots, N-1}\left[X_{N}+\sum_{k = 0}^{N-1}\left(1-U_{k}\right) X_{k}\right]
+\]
+Show the following
+\begin{enumerate}[noitemsep, label= (\alph*)]
+    \item If \( \bar{W}>1 \),
+          \[
+              \mu_{i}^{*}\left(X_{i}\right) = 1,0 \leq i \leq N-1
+          \]
+
+    \item If \( 0<\bar{W}<\frac{1}{N} \),
+          \[
+              \mu_{i}^{*}\left(X_{i}\right) = 0,0 \leq i \leq N-1
+          \]
+
+    \item If \( \frac{1}{N} \leq \bar{W} \leq 1 \),
+          \[
+              \begin{aligned}
+                   & \mu_{i}^{*}\left(X_{i}\right) = 1,0 \leq i \leq N-\bar{k}-1  \\
+                   & \mu_{i}^{*}\left(X_{i}\right) = 0, N-\bar{k} \leq i \leq N-1
+              \end{aligned}
+          \]
+          where \( \bar{k} \) is such that \( \frac{1}{k}<\bar{W} \leq \frac{1}{k+1} \).
+\end{enumerate}
+
 \subsection*{Solution}
