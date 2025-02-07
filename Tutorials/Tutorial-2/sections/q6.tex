@@ -5,3 +5,11 @@ But still, the cost is unbounded. \\
 (Hint: the number of states is countably infinite).
 
 \subsection*{Solution}
+
+Consider an MDP with a countably infinite number of states, with no terminal state, a discount factor \( \gamma < 1 \), and positive rewards for each transition.
+Assume a deterministic policy, where the agent moves to the next state in the sequence \( s_1, s_2, \dots \) with a reward of \( 1/i \) at state \( s_i \).
+The total reward for the trajectory \( s_1, s_2, \dots \) is given by
+\[
+    R = \sum_{i=1}^{\infty} \gamma^i \frac{1}{i}
+\]
+In contrast to the previous question, the reward sequence is unbounded here, and thereby the total reward is unbounded as well, even though the discount factor \( \gamma \) is less than one.
