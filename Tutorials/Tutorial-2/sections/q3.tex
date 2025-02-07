@@ -6,3 +6,11 @@ Prove that the total reward is unbounded for each trajectory.
 Assume that there are some transitions with zero rewards and assumption A1 is there, does there exist trajectories for which the total reward is bounded?
 
 \subsection*{Solution}
+
+We're given a finite MDP with discount factor \( \gamma = 1 \) and non-random positive rewards following an improper policy.
+Since the policy is improper, we have the possibility that the agent may not reach a terminal state.
+For any trajectory that is obtained by following an improper policy, the total reward is unbounded due to the accumulation of positive rewards over an infinite number of time steps.
+Hence, the total reward is unbounded for each trajectory obtained by following this improper policy.
+
+Assumption-A1 states that the probability of going from any non-terminal state to any other non-terminal state is non-zero.
+Given that there are some transitions with zero rewards, it is possible that the agent may get stuck in a loop of states with zero rewards, and the total reward for such trajectories is bounded.
