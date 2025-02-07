@@ -9,3 +9,21 @@ Can you say something about exptected total reward received starting from nonter
 (Hint for the later part: Think in terms of boundness of expected total rewards).
 
 \subsection*{Solution}
+
+Denote the terminal state as \( s_0 \) and the nonterminal state as \( s_1 \).
+Let \( V \) be the expected total reward received starting from the nonterminal state.
+Then, we have the following equation:
+\[
+    V = p(r + V) + (1-p)R
+\]
+Solving for \( V \), we get
+\begin{align*}
+     &
+    V(1 - p) = pr + (1-p)R
+    \\
+    \implies
+     &
+    \boxed{ V = \frac{pr + (1-p)R}{1-p} }
+\end{align*}
+If \( 0 \leq p < 1 \), then \( V \) is bounded, and is given by the above equation.
+If \( p = 1 \) is allowed, then \( V \) is unbounded, and approaches infinity.
