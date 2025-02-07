@@ -4,3 +4,24 @@ Consider an finite state MDP, the discount factor is less than one.
 Then, prove that the total reward is bounded for any trajectory.
 
 \subsection*{Solution}
+
+Given a finite state MDP with a discount factor \( \gamma < 1 \), we can prove that the total reward is bounded for any trajectory.
+Since the MDP is finite, there exists a terminal state \( s_T \) which is reachable from any state in the MDP.\@
+The total reward for any trajectory is given by
+\[
+    R = \sum_{t=0}^{\infty} \gamma^t r_t
+\]
+where \( r_t \) is the reward at time step \( t \).
+Since the discount factor \( \gamma < 1 \), the total reward is bounded by
+\[
+    R \leq \sum_{t=0}^{\infty} \gamma^t R_{\text{max}}
+\]
+where \( R_{\text{max}} \) is the maximum reward that can be obtained in the MDP.\@
+Since the sum of the geometric series is bounded by
+\[
+    \sum_{t=0}^{\infty} \gamma^t = \frac{1}{1 - \gamma}, \quad \text{for} \quad \vert \gamma \vert < 1
+\]
+we can conclude that the total reward is bounded for any trajectory in a finite state MDP with a discount factor less than one, and the bound is given by
+\[
+    R \leq \frac{R_{\text{max}}}{1 - \gamma}
+\]
