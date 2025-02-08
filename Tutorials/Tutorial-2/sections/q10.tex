@@ -4,3 +4,40 @@ Prove the contraction mapping theorem.
 And also prove the uniqueness of the fixed point.
 
 \subsection*{Solution}
+
+\subsubsection*{Contraction mapping}
+
+Let \( (X, d) \) be a metric space.
+A function \( f: X \to X \) is said to be a contraction mapping if there exists a constant \( 0 \leq k < 1 \) called the contraction factor/ Lipschitz constant, such that
+\[
+    d(f(x), f(y)) \leq k d(x, y), \quad \forall x, y \in X
+\]
+
+\subsubsection*{Contraction mapping theorem/ Banach fixed-point theorem}
+
+Let \( (X, d) \) be a non-empty complete metric space and \( f: X \to X \) be a contraction mapping.
+Then, there exists a unique fixed point for the contraction mapping \( f \).
+
+\subsubsection*{Proof}
+
+\textbf{Existence of fixed point}\\
+Consider the sequence \( x_0, x_1, x_2, \dots \) defined by \( x_{n} = f(x_{n-1}) \).
+We can see that this sequence is a Cauchy sequence, as
+\[
+    d(x_{n}, x_{n-1}) = d(f(x_{n}), f(x_{n-1})) \leq k d(x_{n-1}, x_{n-2}) \leq \dots \leq k^{n} d(x_1, x_0)
+\]
+Since \( k < 1 \), the sequence \( k^n \) converges to zero as \( n \to \infty \).
+Hence, the sequence \( x_0, x_1, x_2, \dots \) is a Cauchy sequence, and since \( (X, d) \) is complete, the sequence converges to a point \( x^* \in X \).
+Since \( f \) is continuous, we have
+\[
+    x^* = \lim_{n \to \infty} x_n = \lim_{n \to \infty} f(x_{n-1}) = f \left( \lim_{n \to \infty} x_{n-1} \right) = f(x^*)
+\]
+i.e., \( x^* \) is a fixed point of the contraction mapping \( f \).
+\vspace*{1em}\\
+\textbf{Uniqueness of fixed point}\\
+Let \( x^* \) and \( y^* \) be two fixed points of the contraction mapping \( f \), i.e., \( f(x^*) = x^* \) and \( f(y^*) = y^* \).
+Then, we have
+\[
+    d(x^*, y^*) = d(f(x^*), f(y^*)) \leq k d(x^*, y^*)
+\]
+If \( x^* \neq y^* \), then \( d(x^*, y^*) > 0 \), and we can divide both sides by \( d(x^*, y^*) \) to get \( 1 \leq k \), which is a contradiction, hence we have \( x^* = y^* \).
