@@ -4,3 +4,10 @@ Suppose the domain and codomain is \( [n, n+1] \) where \( n \) is an even posit
 If not, then give an example of a continuous function that does not have a fixed point.
 
 \subsection*{Solution}
+
+Proof is similar to \hyperref[sec:q11]{Question 11}.\\
+Given a continuous function \( F: [n, n+1] \rightarrow [n, n+1] \), define the function \( g: [n, n+1] \rightarrow \mathbb{R} \) as \( g(x) = F(x) - x \).
+We can see that \( g \) is continuous, as the difference of two continuous functions is continuous.
+Moreover, we have \( g(n) = F(n) - n \implies F(n) \geq 0 \) and \( g(n+1) = F(n+1) - (n+1) \implies g(n+1) \leq 0 \).
+By the intermediate value theorem, there exists a point \( x^* \in [n, n+1] \) such that \( g(x^*) = 0 \), i.e., \( F(x^*) = x^* \), which implies that \( x^* \) is a fixed point of the function \( F \).
+Hence, the fixed point theorem is still valid for the domain and codomain \( [n, n+1] \) where \( n \) is an even positive number.
