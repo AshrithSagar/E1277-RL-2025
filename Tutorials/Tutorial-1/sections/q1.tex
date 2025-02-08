@@ -8,3 +8,16 @@ On which time steps did this definitely occur?
 On which time steps could this possibly have occurred?
 
 \subsection*{Solution}
+
+The \( \epsilon \)-greedy action selection algorithm selects a random action with probability \( \epsilon \) which is the exploration case and selects the greedy action with probability \( 1 - \epsilon \) which is the exploitation case.
+The \( Q \) values by the sample-average action-value estimates are defined as
+\[
+    Q_{t}(a) = \frac{\text{sum of rewards when action \( a \) taken prior to time \( t \)}}{\text{number of times action \( a \) taken prior to time \( t \)}}
+    =
+    \frac{\sum_{i=1}^{t-1} R_{i} \cdot \mathbb{I}(A_{i} = a)}{\sum_{i=1}^{t-1} \mathbb{I}(A_{i} = a)}
+\]
+where \( \mathbb{I}(A_{i} = a) \) is the indicator function which is 1 if \( A_{i} = a \) and 0 otherwise.
+We're given the initial estimates of \( Q_{1}(a) = 0 \) for all \( a \).
+
+The sequence of actions and rewards is given as
+\input{tables/q1.tex}
