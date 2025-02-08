@@ -1,7 +1,12 @@
 \section*{Question 11}
 
-Consider a continuous function \( F:[0,1] \rightarrow[0,1] \).
+Consider a continuous function \( F: [0,1] \rightarrow [0,1] \).
 Prove the fixed point theorem. \\
 (Hint: Use Hint-4)
 
 \subsection*{Solution}
+
+Given a continuous function \( F: [0,1] \rightarrow [0,1] \), define the function \( g: [0,1] \rightarrow \mathbb{R} \) as \( g(x) = F(x) - x \).
+We can see that \( g \) is continuous, as the difference of two continuous functions is continuous.
+Moreover, we have \( g(0) = F(0) - 0 = F(0) \geq 0 \) and \( g(1) = F(1) - 1 \implies g(1) \leq 0 \).
+By the intermediate value theorem, there exists a point \( x^* \in [0,1] \) such that \( g(x^*) = 0 \), i.e., \( F(x^*) = x^* \), which implies that \( x^* \) is a fixed point of the function \( F \).
