@@ -5,9 +5,14 @@ If not, then give an example of a continuous function that does not have a fixed
 
 \subsection*{Solution}
 
-Proof is similar to \hyperref[sec:q11]{Question 11}.\\
+For a fixed \( n \), proof is similar to \hyperref[sec:q11]{Question 11}.\\
 Given a continuous function \( F: [n, n+1] \rightarrow [n, n+1] \), define the function \( g: [n, n+1] \rightarrow \mathbb{R} \) as \( g(x) = F(x) - x \).
 We can see that \( g \) is continuous, as the difference of two continuous functions is continuous.
 Moreover, we have \( g(n) = F(n) - n \implies F(n) \geq 0 \) and \( g(n+1) = F(n+1) - (n+1) \implies g(n+1) \leq 0 \).
 By the intermediate value theorem, there exists a point \( x^* \in [n, n+1] \) such that \( g(x^*) = 0 \), i.e., \( F(x^*) = x^* \), which implies that \( x^* \) is a fixed point of the function \( F \).
 Hence, the fixed point theorem is still valid for the domain and codomain \( [n, n+1] \) where \( n \) is an even positive number.
+
+\vspace*{2em}
+If \( n \) is not fixed, and the question is interpreted as that the domain is \( \cup_{k=1}^{\infty} [2k, 2k+1] \) and the codomain is \( \cup_{k=2}^{\infty} [2k, 2k+1] \).
+Now observe that for any \( x \in [2k, 2k+1] \), consider \( x + 2 \), which is in \( [2(k+1), 2(k+1)+1] \), i.e., \( [2k+2, 2k+3] \), thereby the range of this new function is a subset of the codomain defined as above.
+Now, suppose there exists a fixed point \( x^* \), therefore, \( f(x^*) = x^* \implies \cancel{x^*} = \cancel{x^*} + 2 \), but \( 0 \neq 2 \), thereby, the fixed point theorem is not valid for this domain and codomain.

@@ -6,23 +6,24 @@ Then, prove that the total reward is bounded for any trajectory.
 \subsection*{Solution}
 
 Given a finite state MDP with a discount factor \( \gamma < 1 \), we can prove that the total reward is bounded for any trajectory.
-Since the MDP is finite, there exists a terminal state \( s_T \) which is reachable from any state in the MDP.\@
-The total reward for any trajectory is given by
+Since the MDP has a finite number of states, we can have a finite number of distinct rewards that we get when making transitions from a state to any other state.
+Thereby, we can find the maximum absolute of all rewards, denoted as \( \vert R_{\text{max}} \vert \).
+(Note that even in the uncountable case, if the supremum of the rewards exists, we can consider that).
+The expected total reward for any trajectory is given by
 \[
     R = \sum_{t=0}^{\infty} \gamma^t r_t
 \]
 where \( r_t \) is the reward at time step \( t \).
-Since the discount factor \( \gamma < 1 \), the total reward is bounded by
+By triangle inequality, we have
 \[
-    R \leq \sum_{t=0}^{\infty} \gamma^t R_{\text{max}}
+    \vert R \vert \leq \sum_{t=0}^{\infty} \gamma^t \vert r_t \vert
 \]
-where \( R_{\text{max}} \) is the maximum reward that can be obtained in the MDP.\@
-Since the sum of the geometric series is bounded by
+and since each reward is bounded by \( \vert R_{\text{max}} \vert \), we get
 \[
-    \sum_{t=0}^{\infty} \gamma^t = \frac{1}{1 - \gamma}, \quad \text{for} \quad \vert \gamma \vert < 1
+    \vert R \vert \leq \sum_{t=0}^{\infty} \gamma^t \vert R_{\text{max}} \vert
 \]
-we can conclude that the total reward is bounded for any trajectory in a finite state MDP with a discount factor less than one, and the bound is given by
+Now, since the discount factor \( \gamma < 1 \), this geometric series converges to
 \[
-    R \leq \frac{R_{\text{max}}}{1 - \gamma}
+    \sum_{t=0}^{\infty} \gamma^t \vert R_{\text{max}} \vert = \frac{R_{\text{max}}}{1 - \gamma}
 \]
-In constucting the solution above, we have used the fact that for a finite MDP, the rewards are bounded, i.e., there exists a maximum reward \( R_{\text{max}} \) that can be obtained in the MDP.\@
+Hence, proved.

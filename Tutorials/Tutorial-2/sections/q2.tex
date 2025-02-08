@@ -1,9 +1,9 @@
 \section*{Question 2}
 
-Given an improper policy for a finite state MDP.\@
+Given an proper policy for a finite state MDP.\@
 What is the probability of the set of trajectories for which the total reward is unbounded?
 
 \subsection*{Solution}
 
-In an improper policy, there is a possibility that the agent may not reach a terminal state, which can lead to an unbounded reward.
-The probability of the set of trajectories for which the total reward is unbounded is 1.
+Since the policy is proper, we have that the trajectories terminate in the terminal state with probability 1.
+Since it is a finite MDP, the expected total reward is bounded, thereby the probability of the set of trajectories for which the total reward is unbounded is 0.
