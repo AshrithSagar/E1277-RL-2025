@@ -5,18 +5,19 @@ Give an example of a contraction function/mapping such that no fixed point exist
 
 \subsection*{Solution}
 
-Consider the function \( f: (0,1] \to (0,1] \) defined by \( f(x) = x/2 \), i.e., with the domain and codomain as \( (0,1] \).
+Consider the function \( f: (0,1] \to (0,1] \) defined by \( f(x) = \alpha x \) where \( 0 < \alpha < 1 \), i.e., with the domain and codomain as \( (0,1] \).
 We can see that this function is a contraction mapping, as for any \( x, y \in (0,1] \), we have
 \[
-    \vert f(x) - f(y) \vert = \left\vert \frac{x}{2} - \frac{y}{2} \right\vert = \frac{1}{2} \vert x - y \vert
+    \vert f(x) - f(y) \vert = \left\vert \alpha x - \alpha y \right\vert = \alpha \vert x - y \vert
 \]
-i.e., the contraction factor is \( 1/2 \), which is less than one.
+i.e., the contraction factor is \( \alpha \), which by choice is \( < 1 \), satisfying the contraction condition.
 
 To show that no fixed point exists for this function, we proceed through proof by contradiction.
 Assume that there exists a fixed point \( x^* \), i.e., \( f(x^*) = x^* \).
 Then, we have
 \[
-    x^* = f(x^*) = \frac{x^*}{2}
+    x^* = f(x^*) = \alpha x^*
 \]
-which implies that \( x^* = 0 \), but \( x^* \in (0,1] \), which is a contradiction.
-Hence, no fixed point exists for the contraction function/mapping \( f(x) = x/2 \) defined on the domain \( (0,1] \).
+which implies that \( x^* = 0 \ \because \alpha \neq 0 \).
+But \( x^* \in (0,1] \), which is a contradiction.
+Hence, no fixed point exists for the contraction mapping \( f(x) = \alpha x \) defined on the domain \( (0,1] \).
