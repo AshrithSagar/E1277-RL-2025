@@ -53,7 +53,11 @@
   - Tutorial
   - Stochastic shortest path problems
 - 2025-02-11
+  - Missed, later half
+  - Infinite horizon discounted cost problems
 - 2025-02-13
+  - Necessary and sufficient condition for optimality
+  - Value iteration and error bounds
 - 2025-02-16
   - MidTerm-1
 - 
