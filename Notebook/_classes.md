@@ -3,38 +3,28 @@
 ## Classes
 
 - 2025-01-02
-  - Tab, Laptop
   - Introduction
 - 2025-01-07
-  - Tab
   - Learning theory
 - 2025-01-09
-  - Tab
   - Multi-armed bandits
 - 2025-01-16
-  - Tab
   - Markov decision process
 - 2025-01-18
-  - Tab
   - Proof
   - Examples
     - Chess game
     - Network queue
-  - Todo
 - 2025-01-21
-  - Tab, ~Laptop
   - Stochastic shortest path problems
 - 2025-01-26
-  - Missed
-  - Tutorial
+  - Tutorial-1
 - 2025-01-30
-  - Laptop
   - Stochastic shortest path problems
   - Mappings $T, T_\mu$
   - Bellman equation
   - Monotonicity lemma
 - 2025-02-01
-  - Laptop
   - Proposition-1b
   - Proposition-2a, b, c
   - Nightmare proof
@@ -50,14 +40,15 @@
   - Modified policy iteration
   - Multi-stage look ahead policy iteration
 - 2025-02-08
-  - Tutorial
+  - Tutorial-2
   - Stochastic shortest path problems
 - 2025-02-11
-  - Missed, later half
   - Infinite horizon discounted cost problems
 - 2025-02-13
   - Necessary and sufficient condition for optimality
   - Value iteration and error bounds
 - 2025-02-16
   - MidTerm-1
+- 2025-02-18
+- 2025-02-20
 - 
