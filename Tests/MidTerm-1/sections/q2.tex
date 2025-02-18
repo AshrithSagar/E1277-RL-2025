@@ -1,3 +1,27 @@
 \section*{Question 2}
 
+Consider a grid world problem involving a \( 4 \times 4 \) grid.
+Each cell in the grid world corresponds to a state with \( G \) being the terminal or goal state.
+Assume that four actions are feasible in every state, namely ``go up'', ``go down'', ``go right'' and ``go left'', respectively.
+Any action that leads the agent to leave the grid results in no change in state and a reward of -1.
+(This can happen for states on the boundary of the grid world.)
+Other actions move the state one step in the suggested direction (within the grid world) and give a reward of +1.
+Suppose actions in every state are chosen according to the equiprobable policy \( \pi \) (that selects each action with equal probability).
+The numbers in the table below show the values of the various states.
+However, the values \( v_{\pi}(C) \) and \( v_{\pi}(D) \) below for states \( C \) and \( D \) are not known.
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        0.2 & 0.8              & 0.6     & 0.8              \\
+        \hline
+        0.8 & 2.6              & 2.8     & 0.7              \\
+        \hline
+        0.6 & \( v_{\pi}(C) \) & \( G \) & 0.8              \\
+        \hline
+        0.2 & 0.6              & 0.4     & \( v_{\pi}(D) \) \\
+        \hline
+    \end{tabular}
+\end{center}
+Find \( v_{\pi}(C) \) and \( v_{\pi}(D) \)?
+
 \subsection*{Solution}

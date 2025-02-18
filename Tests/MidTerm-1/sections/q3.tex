@@ -1,3 +1,20 @@
 \section*{Question 3}
 
+Consider the multi-armed bandit setting involving \( K \) arms (numbered \( 1, \dots, K \)).
+Suppose the probability of selecting arm \( a \in A=\{1, \dots, K\} \) is given by
+\[
+    \pi_{\theta}(a)=\frac{\exp \left(\theta^{T} \varphi(a)\right)}{\sum_{b \in A} \exp \left(\theta^{T} \phi(b)\right)}, a \in A
+\]
+Let \( R_{t} \) denote the single-stage reward at time \( t \) when one of the arms is pulled according to the probability distribution \( \left(\pi_{\theta}(a), a \in A\right) \).
+Suppose now that we update \( \theta \) using a version of the gradient bandit algorithm as follows:
+\[
+    \theta_{t+1}=\theta_{t}+\alpha_{t} \nabla_{\theta} E\left[R_{t}\right],
+\]
+where \( \alpha_{t}, t \geq 0 \) is a step-size sequence satisfying standard requirements.
+\begin{enumerate}[noitemsep]
+    \item Evaluate \( \nabla_{\theta} E\left[R_{\ell}\right] \)
+    \item Obtain and write the stochastic counterpart of the above gradient bandit algorithm by substituting the expected values with noisy (data-driven) random variables whose average gives the aforementioned expected values.
+          Do not use any reward baseline.
+\end{enumerate}
+
 \subsection*{Solution}
