@@ -25,3 +25,23 @@ However, the values \( v_{\pi}(C) \) and \( v_{\pi}(D) \) below for states \( C 
 Find \( v_{\pi}(C) \) and \( v_{\pi}(D) \)?
 
 \subsection*{Solution}
+
+The Bellman equation for a given policy \( \pi \) is given by
+\[
+    v_{\pi}(s) = \sum_{u \in A(s)} \pi(u|s) \sum_{s' \in S} p_{s, s'}(u) \left[ r(s, u, s') + v_{\pi}(s') \right], \quad \forall s \in S
+\]
+Equiprobable policy \( \implies \pi(u|s) = \frac{1}{4}, \ \forall u \in A(s), \ \forall s \in S \).\\
+Additionally, \( p_{s, s'}(u) = 1 \) and \( v_\pi(G) = 0 \).
+\begin{align*}
+    \implies
+    v_{\pi}(C)
+     & =
+    \frac{1}{4} \Big[ (1 + 2.6) + (1 + 0.6) + (1 + 0.6) + (1 + 0) \Big]
+    = \frac{7.8}{4} = 1.95
+    \\
+    v_{\pi}(D)
+     & =
+    \frac{1}{4} \Big[ (1 + 0.8) + (-1 + v_{\pi}(D)) + (-1 + v_{\pi}(D)) + (1 + 0.4) \Big]
+    \implies
+    v_{\pi}(D) = 0.6
+\end{align*}
