@@ -10,3 +10,25 @@ Show the following:
 \end{enumerate}
 
 \subsection*{Solution}
+
+\subsubsection*{Existence of a fixed point of \( W \)}
+
+Since \( \mathbb{R}^{|S|} \) is a complete metric space, and \( W^{q} \) is a contraction mapping with \( q > 1 \) there exists a unique fixed point \( x^{*} \) of \( W^{q} \), by the contraction mapping theorem, thereby \( W^{q}(x^{*}) = x^{*} \).
+Now, we have
+\[
+    W^{q+1}(x^{*}) = W^{q}(W(x^{*})) = W(W^{q}(x^{*})) = W(x^{*})
+\]
+which implies that \( W(x^{*}) \) is also a fixed point of \( W^{q} \).
+Since the fixed point of \( W^{q} \) is unique, we have \( W(x^{*}) = x^{*} \), which implies that \( x^{*} \) is a fixed point of \( W \).
+
+\subsubsection*{Uniqueness of the fixed point of \( W \)}
+
+Can be shown through proof by contradiction.
+Assume that there exists another fixed point \( y^{*} \) of \( W \) such that \( y^{*} \neq x^{*} \).
+Upon applying \( W \) to both these points \( q \) times, we get
+\[
+    W^{q}(x^{*}) = x^{*} \quad \text{and} \quad W^{q}(y^{*}) = y^{*}
+\]
+This implies that \( x^{*} \) and \( y^{*} \) are fixed points of \( W^{q} \) as well.
+But since \( W^{q} \) has a unique fixed point, we have \( x^{*} = y^{*} \), which is a contradiction.
+Hence, the fixed point of \( W \) is unique, which is the same as the fixed point of \( W^{q} \).
