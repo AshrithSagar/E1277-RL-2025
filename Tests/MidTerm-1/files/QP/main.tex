@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{enumitem, geometry, graphicx, fancybox, hyperref}
+\usepackage{booktabs}
+
+\geometry{
+  left=1in,
+  right=1in,
+  top=1in,
+  bottom=1in
+}
+
+\title{E1--277 Mid-Term Exam 1}
+\author{Answer All Questions; Total Marks: 25}
+\date{February 16, 2025}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+
+  \item
+        Consider a finite horizon MDP with horizon length \( N>1 \).
+        Suppose the single stage costs \( g_{k}, k=0,1, \ldots, N-2 \) satisfy monotonicity in the sense that \( g_{k}(x, u, y) \leq g_{k+1}(x, u, y), \forall x, y \in S, u \in A(x), 0 \leq k \leq N-2 \).
+        Also, suppose that \( J_{N-1}(x) \leq g_{N}(x), \forall x \in S \).
+        Show that \( J_{k}(x) \leq J_{k+1}(x), \forall k=0,1, \ldots, N-1, \forall x \in S \).\@ \hfill [4 marks]
+
+  \item
+        Consider a grid world problem involving a \( 4 \times 4 \) grid.
+        Each cell in the grid world corresponds to a state with \( G \) being the terminal or goal state.
+        Assume that four actions are feasible in every state, namely ``go up'', ``go down'', ``go right'' and ``go left'', respectively.
+        Any action that leads the agent to leave the grid results in no change in state and a reward of -1.
+        (This can happen for states on the boundary of the grid world.)
+        Other actions move the state one step in the suggested direction (within the grid world) and give a reward of +1.
+        Suppose actions in every state are chosen according to the equiprobable policy \( \pi \) (that selects each action with equal probability).
+        The numbers in the table below show the values of the various states.
+        However, the values \( v_{\pi}(C) \) and \( v_{\pi}(D) \) below for states \( C \) and \( D \) are not known.
+        \begin{center}
+          \begin{tabular}{|c|c|c|c|}
+            \hline
+            0.2 & 0.8              & 0.6     & 0.8              \\
+            \hline
+            0.8 & 2.6              & 2.8     & 0.7              \\
+            \hline
+            0.6 & \( v_{\pi}(C) \) & \( G \) & 0.8              \\
+            \hline
+            0.2 & 0.6              & 0.4     & \( v_{\pi}(D) \) \\
+            \hline
+          \end{tabular}
+        \end{center}
+        Find \( v_{\pi}(C) \) and \( v_{\pi}(D) \)?
+        \hfill [4 marks]
+
+  \item
+        Consider the multi-armed bandit setting involving \( K \) arms (numbered \( 1, \dots, K \)).
+        Suppose the probability of selecting arm \( a \in A=\{1, \dots, K\} \) is given by
+        \[
+          \pi_{\theta}(a)=\frac{\exp \left(\theta^{T} \varphi(a)\right)}{\sum_{b \in A} \exp \left(\theta^{T} \phi(b)\right)}, a \in A
+        \]
+        Let \( R_{t} \) denote the single-stage reward at time \( t \) when one of the arms is pulled according to the probability distribution \( \left(\pi_{\theta}(a), a \in A\right) \).
+        Suppose now that we update \( \theta \) using a version of the gradient bandit algorithm as follows:
+        \[
+          \theta_{t+1}=\theta_{t}+\alpha_{t} \nabla_{\theta} E\left[R_{t}\right],
+        \]
+        where \( \alpha_{t}, t \geq 0 \) is a step-size sequence satisfying standard requirements.
+        \begin{enumerate}
+          \item
+                Evaluate \( \nabla_{\theta} E\left[R_{\ell}\right] \)
+                \hfill [4 marks]
+          \item
+                Obtain and write the stochastic counterpart of the above gradient bandit algorithm by substituting the expected values with noisy (data-driven) random variables whose average gives the aforementioned expected values.
+                Do not use any reward baseline.
+                \hfill [4 marks]
+        \end{enumerate}
+
+  \item
+        A burglar is successful on each attempt with probability \( p \) and unsuccessful with probability \( 1-p \).
+        If he is successful, the amount he loots is \( j \) with probability \( P_{j}, j \geq 0 \).
+        If unsuccessful, he is caught and taken into custody, and loses all his loot (from the start), and the problem ends.
+        The burglar is allowed to retire at any time and keep all the loot he has accumulated up to that time.
+        Assume that the expected loot from a successful burglary is finite.
+        Show that the optimal policy for the burglar is of the threshold type, that is, there exists \( i_{0} \) such that if the loot level \( i \) is at least \( i_{0} \), it is optimal for the burglar to stop.
+        \hfill [4 marks]
+
+  \item
+        Consider a mapping \( W: \mathbb{R}^{|S|} \rightarrow \mathbb{R}^{|S|} \) that is not a contraction.
+        However, a \( q \)-times composition of \( W \) with itself is a contraction for some \( q>1 \).
+        In other words, \( W^{q} \): \( \mathbb{R}^{|S|} \rightarrow \mathbb{R}^{|S|} \) is a contraction.
+        Show the following:
+        \begin{enumerate}
+          \item
+                There exists a fixed point of \( W \).
+                \hfill [3 marks]
+
+          \item
+                The above fixed point of \( W \) is unique.
+                \hfill [2 marks]
+        \end{enumerate}
+
+\end{enumerate}
+\end{document}
