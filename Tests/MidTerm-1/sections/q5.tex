@@ -1,8 +1,8 @@
 \section*{Question 5}
 
-Consider a mapping \( W: \mathbb{R}^{|S|} \rightarrow \mathbb{R}^{|S|} \) that is not a contraction.
+Consider a mapping \( W: \mathbb{R}^{\vertS\vert} \rightarrow \mathbb{R}^{\vertS\vert} \) that is not a contraction.
 However, a \( q \)-times composition of \( W \) with itself is a contraction for some \( q>1 \).
-In other words, \( W^{q} \): \( \mathbb{R}^{|S|} \rightarrow \mathbb{R}^{|S|} \) is a contraction.
+In other words, \( W^{q} \): \( \mathbb{R}^{\vertS\vert} \rightarrow \mathbb{R}^{\vertS\vert} \) is a contraction.
 Show the following:
 \begin{enumerate}[noitemsep]
     \item There exists a fixed point of \( W \).
@@ -13,7 +13,7 @@ Show the following:
 
 \subsubsection*{Existence of a fixed point of \( W \)}
 
-Since \( \mathbb{R}^{|S|} \) is a complete metric space, and \( W^{q} \) is a contraction mapping with \( q > 1 \) there exists a unique fixed point \( x^{*} \) of \( W^{q} \), by the contraction mapping theorem, thereby \( W^{q}(x^{*}) = x^{*} \).
+Since \( \mathbb{R}^{\vertS\vert} \) is a complete metric space, and \( W^{q} \) is a contraction mapping with \( q > 1 \) there exists a unique fixed point \( x^{*} \) of \( W^{q} \), by the contraction mapping theorem, thereby \( W^{q}(x^{*}) = x^{*} \).
 Now, we have
 \[
     W^{q+1}(x^{*}) = W^{q}(W(x^{*})) = W(W^{q}(x^{*})) = W(x^{*})

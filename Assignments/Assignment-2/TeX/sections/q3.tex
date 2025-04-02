@@ -2,7 +2,7 @@
 
 We have so far discussed infinite-horizon reinforcement learning with exponential discounting.
 In practice, one is also interested in quasi-hyperbolic discounting.
-In this case, we have two parameter \( \sigma, \gamma \in [0,1) \), and the value function \( J_{\mu} \in \mathbb{R}^{|\mathcal{S}|} \) of a stationary (possibly stochastic) policy \( \mu \) is given by
+In this case, we have two parameter \( \sigma, \gamma \in [0,1) \), and the value function \( J_{\mu} \in \mathbb{R}^{\vert\mathcal{S}\vert} \) of a stationary (possibly stochastic) policy \( \mu \) is given by
 \[
     J_{\mu}(s)=\mathbb{E}\left[\sum_{n=0}^{\infty} d_{n} g\left(s_{n}, a_{n}, s_{n+1}\right) \mid s_{0}=s\right],
 \]
