@@ -47,3 +47,25 @@ Starting with the Bellman equation, and applying the projected Bellman operator 
     \Phi \theta_{*}
 \end{align*}
 as required, showing that \( \theta_{*} \) is the fixed point of the projected Bellman operator.
+
+Starting with \( A \theta_{*} = b \), and substituting the definitions of \( A \) and \( b \), we have
+\begin{align*}
+    \implies
+    \Phi^{\top} D_{\mu}\left(\mathbb{I}-\gamma P_{\mu}\right) \Phi \theta_{*}
+     & =
+    \Phi^{\top} D_{\mu} r_{\mu}
+    \\
+    \implies
+    \Phi^{\top} D_{\mu} \Phi \theta_{*} - \gamma \Phi^{\top} D_{\mu} P_{\mu} \Phi \theta_{*}
+     & =
+    \Phi^{\top} D_{\mu} r_{\mu}
+    \\
+    \implies
+    \Phi^{\top} D_{\mu} \Phi \theta_{*}
+     & =
+    \Phi^{\top} D_{\mu} r_{\mu} + \gamma \Phi^{\top} D_{\mu} P_{\mu} \Phi \theta_{*}
+    \\ & =
+    \Phi^{\top} D_{\mu} \left( r_{\mu} + \gamma P_{\mu} \Phi \theta_{*} \right)
+    =
+    \Phi^{\top} D_{\mu} T_{\mu} \Phi \theta_{*}
+\end{align*}
