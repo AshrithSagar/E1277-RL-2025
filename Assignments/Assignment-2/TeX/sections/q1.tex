@@ -1,1 +1,20 @@
 \section*{Question 1}
+
+Consider the MDP \( \mathcal{M} \equiv(\mathcal{S}, \mathcal{A}, P, r, \gamma) \) with \( \vert \mathcal{S} \vert = S \) and \( \vert \mathcal{A} \vert = A \).
+Suppose \( \mu \) is a stochastic policy and \( \Phi \in \mathbb{R}^{S \times d} \) a feature matrix for some \( d \geq 1 \).
+Let \( P_{\mu} \) be the \( S \times S \) matrix given by
+\[
+    P_{\mu}\left(s^{\prime} \mid s\right)=\sum_{a} \mu(a \mid s) P\left(s^{\prime} \mid s, a\right)
+\]
+This matrix represents the transition matrix of the Markov chain \( \left(\mathcal{S}, P_{\mu}\right) \) induced by \( \mu \).
+Suppose this Markov chain is ergodic so that it has a unique stationary distribution, which we denote by \( d_{\mu} \).
+Let \( D_{\mu} \) be the \( S \times S \) diagonal matrix whose diagonal is \( d_{\mu} \), and let
+\[
+    A=\Phi^{\top} D_{\mu}\left(\mathbb{I}-\gamma P_{\mu}\right) \Phi \quad \text { and } b=\Phi^{\top} D_{\mu} r_{\mu},
+\]
+where \( r_{\mu}(s)=\sum_{a} \mu(a \mid s) r(s, a) \).
+Let \( \Pi: \mathbb{R}^{S} \rightarrow \mathbb{R}^{S} \) be given by \( \Pi J=\Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} J \).
+
+Show that \( \theta_{*}:=A^{-1} b \) is the fixed point of the projected Bellman operator, i.e., \( \Pi T_{\mu} \Phi \theta_{*}=\Phi \theta_{*} \), where \( T_{\mu}: \mathbb{R}^{S} \rightarrow \mathbb{R}^{S} \) is the Bellman operator satisfying \( T_{\mu} J=r_{\mu}+\gamma P_{\mu} J \).
+
+\subsection*{Solution}

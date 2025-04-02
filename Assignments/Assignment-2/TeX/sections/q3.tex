@@ -1,1 +1,27 @@
 \section*{Question 3}
+
+We have so far discussed infinite-horizon reinforcement learning with exponential discounting.
+In practice, one is also interested in quasi-hyperbolic discounting.
+In this case, we have two parameter \( \sigma, \gamma \in [0,1) \), and the value function \( J_{\mu} \in \mathbb{R}^{|\mathcal{S}|} \) of a stationary (possibly stochastic) policy \( \mu \) is given by
+\[
+    J_{\mu}(s)=\mathbb{E}\left[\sum_{n=0}^{\infty} d_{n} g\left(s_{n}, a_{n}, s_{n+1}\right) \mid s_{0}=s\right],
+\]
+where
+\[
+    d_{n}= \begin{cases}1 & \text { if } n=0 \\ \sigma \gamma^{n} & \text { if } n \geq 1\end{cases}
+\]
+further, \( a_{n} \sim \mu\left(\cdot \mid s_{n}\right) \) and \( s_{n+1} \sim \mathcal{P}\left(\cdot \mid s_{n}, a_{n}\right) \) for \( n \geq 0 \).
+
+Answer the following questions.
+\begin{enumerate}[label= (\alph*), noitemsep]
+    \item Does there exist a Bellman-type relation for \( J_{\mu} \)?
+    \item From the above relation, can you identify the Bellman operator \( T_{\mu} \)?
+          Is this operator a contraction?
+    \item Suppose the transition matrix \( \mathcal{P} \) is unknown.
+          Can you design a model-free algorithm to estimate \( J_{\mu} \)?
+          You can presume that you can sample from the invariant distribution of the Markov chain induced by \( \mu \).
+          Discuss the almost convergence of this algorithm.
+          You may directly use the results that were discussed in class.
+\end{enumerate}
+
+\subsection*{Solution}
