@@ -18,3 +18,32 @@ Let \( \Pi: \mathbb{R}^{S} \rightarrow \mathbb{R}^{S} \) be given by \( \Pi J=\P
 Show that \( \theta_{*}:=A^{-1} b \) is the fixed point of the projected Bellman operator, i.e., \( \Pi T_{\mu} \Phi \theta_{*}=\Phi \theta_{*} \), where \( T_{\mu}: \mathbb{R}^{S} \rightarrow \mathbb{R}^{S} \) is the Bellman operator satisfying \( T_{\mu} J=r_{\mu}+\gamma P_{\mu} J \).
 
 \subsection*{Solution}
+
+Starting with the Bellman equation, and applying the projected Bellman operator \( \Pi \) on both sides, and using \( J = \Phi \theta_{*} \), we have
+\begin{align*}
+    T_{\mu} J
+     & =
+    r_{\mu} + \gamma P_{\mu} J
+    \\
+    \implies
+    \Pi T_{\mu} J
+     & =
+    \Pi \left(r_{\mu} + \gamma P_{\mu} J\right)
+    =
+    \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} J
+    \\
+    \implies
+    \Pi T_{\mu} \Phi \theta_{*}
+     & =
+    \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} \Phi \theta_{*}
+    \\ & =
+    \Phi \cancel{{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1}} \cancel{\left(\Phi^{\top} D_{\mu} \Phi\right)} \theta_{*}
+    =
+    \Phi \theta_{*}
+    \\
+    \therefore
+    \Pi T_{\mu} \Phi \theta_{*}
+     & =
+    \Phi \theta_{*}
+\end{align*}
+as required, showing that \( \theta_{*} \) is the fixed point of the projected Bellman operator.
