@@ -25,3 +25,36 @@ Answer the following questions.
 \end{enumerate}
 
 \subsection*{Solution}
+
+Yes, there exists a Bellman-type relation for \( J_{\mu} \).
+The Bellman equation can be expressed as:
+\[
+    J_{\mu}(s)=\sigma r_{\mu}(s)+\gamma \sum_{s^{\prime}} P_{\mu}\left(s^{\prime} \mid s\right) J_{\mu}(s^{\prime}),
+\]
+where \( r_{\mu}(s)=\mathbb{E}\left[g\left(s, a, s^{\prime}\right) \mid s, a \sim \mu\left(\cdot \mid s\right), s^{\prime} \sim P_{\mu}\left(\cdot \mid s, a\right)\right] \).
+
+The Bellman operator \( T_{\mu} \) can be defined as:
+\[
+    T_{\mu} J=\sigma r_{\mu}+\gamma P_{\mu} J.
+\]
+This operator is a contraction with respect to the \( L_{2} \) norm, as it satisfies the contraction property:
+\[
+    \Vert T_{\mu} J_{1}-T_{\mu} J_{2} \Vert_{L_{2}} \leq \gamma \Vert J_{1}-J_{2} \Vert_{L_{2}}.
+\]
+
+Yes, we can design a model-free algorithm to estimate \( J_{\mu} \) using temporal-difference learning or Q-learning methods.
+We can use the following update rule:
+\[
+    J_{t+1}(s) = J_{t}(s) + \alpha \left( d_{t} g\left(s_{t}, a_{t}, s_{t+1}\right) + \gamma J_{t}(s_{t+1}) - J_{t}(s) \right),
+\]
+where \( \alpha \) is the learning rate, \( d_{t} \) is the discount factor at time \( t \), and \( g\left(s_{t}, a_{t}, s_{t+1}\right) \) is the reward received at time \( t \).
+The algorithm converges almost surely to the optimal value function \( J_{\mu} \) under certain conditions, such as:
+\begin{itemize}[noitemsep]
+    \item The learning rate \( \alpha \) satisfies the conditions \( \sum_{t=1}^{\infty} \alpha_{t} = \infty \) and \( \sum_{t=1}^{\infty} \alpha_{t}^{2} < \infty \).
+    \item The state-action pairs are visited infinitely often.
+    \item The rewards are bounded.
+    \item The policy \( \mu \) is stationary and stochastic.
+\end{itemize}
+Under these conditions, the algorithm will converge almost surely to the optimal value function \( J_{\mu} \) as \( t \to \infty \).
+The convergence can be shown using the results discussed in class, specifically the convergence of stochastic approximation algorithms.
+The proof relies on the properties of the Bellman operator and the contraction mapping theorem, which guarantees that the fixed point of the operator is unique and can be approximated by the algorithm.
