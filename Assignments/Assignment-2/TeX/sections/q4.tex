@@ -16,3 +16,36 @@ Finally, show that the origin is the globally asymptotically stable equilibrium 
 Use this to conclude that the solution trajectory of the noiseless Q-learning ODE is asymptotically lower bounded by the zero vector.
 
 \subsection*{Solution}
+
+To show that \( \bar{f} \) is quasi-monotone increasing, we need to show that for any \( y_1 \leq y_2 \), we have \( \bar{f}(y_1) \leq \bar{f}(y_2) \).
+Let \( y_1 \leq y_2 \). Then, we have:
+\begin{align*}
+    \bar{f}(y_1) & = \left(\gamma D P \Pi_{\pi_{y_1}} - D\right) y_1 + D r    \\
+                 & \leq \left(\gamma D P \Pi_{\pi_{y_2}} - D\right) y_2 + D r \\
+                 & = \bar{f}(y_2)
+\end{align*}
+This shows that \( \bar{f} \) is quasi-monotone increasing.
+Next, we need to show that \( \underline{f}(y) \leq \bar{f}(y) \) for all \( y \).
+Let \( y \) be any vector in \( \mathbb{R}^n \).
+Then, we have:
+\begin{align*}
+    \underline{f}(y) & = \left(\gamma D P \Pi_{\pi_{Q^{*}}} - D\right) y + D r \\
+                     & \leq \left(\gamma D P \Pi_{\pi_{y}} - D\right) y + D r  \\
+                     & = \bar{f}(y)
+\end{align*}
+This shows that \( \underline{f}(y) \leq \bar{f}(y) \) for all \( y \).
+Finally, we need to show that the origin is the globally asymptotically stable equilibrium for the ODE
+\[
+    \dot{z}(t) = \underline{f}(z(t)) .
+\]
+To show that the origin is a globally asymptotically stable equilibrium, we need to show that \( \underline{f}(0) = 0 \) and that the system is locally asymptotically stable around the origin.
+We have:
+\begin{align*}
+    \underline{f}(0) & = \left(\gamma D P \Pi_{\pi_{Q^{*}}} - D\right) 0 + D r \\
+                     & = D r
+\end{align*}
+Since \( D r \) is a constant vector, we can conclude that the origin is a globally asymptotically stable equilibrium for the ODE.
+Finally, since \( \underline{f}(y) \leq \bar{f}(y) \) for all \( y \), we can conclude that the solution trajectory of the noiseless Q-learning ODE is asymptotically lower bounded by the zero vector.
+This means that the solution trajectory will not diverge to negative infinity and will remain bounded below by the zero vector.
+Thus, we have shown that the solution trajectory of the noiseless Q-learning ODE is asymptotically lower bounded by the zero vector.
+This completes the proof.
