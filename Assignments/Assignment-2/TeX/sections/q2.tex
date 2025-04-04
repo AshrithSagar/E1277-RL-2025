@@ -4,3 +4,27 @@ Let \( T_{\mu} \) be the Bellman operator defined in the above question. \\
 Show that \( T_{\mu} \) is a \( \gamma \)--contraction with respect to \( {\Vert \cdot \Vert}_{D_{\mu}} \).
 
 \subsection*{Solution}
+
+We need to show that \( \Vert T_{\mu} J_{1} - T_{\mu} J_{2} \Vert_{D_{\mu}} \leq \gamma \Vert J_{1} - J_{2} \Vert_{D_{\mu}} \) for all \( J_{1}, J_{2} \in \mathbb{R}^{S} \).
+
+Starting with the left-hand side, we have
+\begin{align*}
+    \Vert T_{\mu} J_{1} - T_{\mu} J_{2} \Vert_{D_{\mu}}
+     & =
+    \Vert r_{\mu} + \gamma P_{\mu} J_{1} - r_{\mu} - \gamma P_{\mu} J_{2} \Vert_{D_{\mu}}
+    \\
+     & =
+    \Vert \gamma P_{\mu} J_{1} - \gamma P_{\mu} J_{2} \Vert_{D_{\mu}}
+    \\
+     & =
+    \gamma \Vert P_{\mu} J_{1} - P_{\mu} J_{2} \Vert_{D_{\mu}}
+    \\
+     & \leq
+    \gamma \Vert J_{1} - J_{2} \Vert_{D_{\mu}}
+\end{align*}
+where the last step follows from the definition of the \( D_{\mu} \) norm, which is defined as \( \Vert J \Vert_{D_{\mu}} = \sqrt{J^{\top} D_{\mu} J} \), and the fact that \( P_{\mu} \) is a contraction mapping.
+Thus, we have shown that \( T_{\mu} \) is a \( \gamma \)--contraction with respect to \( {\Vert \cdot \Vert}_{D_{\mu}} \):
+\[
+    \Vert T_{\mu} J_{1} - T_{\mu} J_{2} \Vert_{D_{\mu}} \leq \gamma \Vert J_{1} - J_{2} \Vert_{D_{\mu}}
+\]
+This completes the proof.
