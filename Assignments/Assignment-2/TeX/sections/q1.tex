@@ -15,11 +15,34 @@ Let \( D_{\mu} \) be the \( S \times S \) diagonal matrix whose diagonal is \( d
 where \( r_{\mu}(s)=\sum_{a} \mu(a \mid s) r(s, a) \).
 Let \( \Pi: \mathbb{R}^{S} \rightarrow \mathbb{R}^{S} \) be given by \( \Pi J=\Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} J \).
 
-Show that \( \theta_{*}:=A^{-1} b \) is the fixed point of the projected Bellman operator, i.e., \( \Pi T_{\mu} \Phi \theta_{*}=\Phi \theta_{*} \), where \( T_{\mu}: \mathbb{R}^{S} \rightarrow \mathbb{R}^{S} \) is the Bellman operator satisfying \( T_{\mu} J=r_{\mu}+\gamma P_{\mu} J \).
+Show that \( \theta_\ast:=A^{-1} b \) is the fixed point of the projected Bellman operator, i.e., \( \Pi T_{\mu} \Phi \theta_\ast=\Phi \theta_\ast \), where \( T_{\mu}: \mathbb{R}^{S} \rightarrow \mathbb{R}^{S} \) is the Bellman operator satisfying \( T_{\mu} J=r_{\mu}+\gamma P_{\mu} J \).
 
 \subsection*{Solution}
 
-Starting with the Bellman equation, and applying the projected Bellman operator \( \Pi \) on both sides, and using \( J = \Phi \theta_{*} \), we have
+Given an MDP \( \mathcal{M} \equiv(\mathcal{S}, \mathcal{A}, P, r, \gamma) \) with \( \vert \mathcal{S} \vert = S \) and \( \vert \mathcal{A} \vert = A \), we have the Bellman operator defined as
+\[
+    T_{\mu} J(s) = r_{\mu}(s) + \gamma \sum_{s^{\prime}} P_{\mu}(s^{\prime} \mid s) J(s^{\prime}),
+\]
+where \( J \in \mathbb{R}^{S} \) is the value function.
+
+In (linear) stochastic function approximation, we are interested in finding a \( \theta_\ast \in \mathbb{R}^{d} \) such that \( J_\mu \approx \Phi \theta_\ast \), where \( J_\mu \) is the optimal value function for the policy \( \mu \), and \( \Phi \in \mathbb{R}^{S \times d} \) is a feature matrix.
+The reason we want to do this is because the dimension of \( J_\mu \) is \( S \), which can be very large, in general, and we want to approximate it with a smaller dimensional representation \( \Phi \theta_\ast \).
+From general MDP theory, we know that the optimal value function \( J_\mu \), for a given policy \( \mu \), satisfies the Bellman equation
+\[
+    J_\mu(s) = r_{\mu}(s) + \gamma \sum_{s^{\prime}} P_{\mu}(s^{\prime} \mid s) J_\mu(s^{\prime}),
+    \implies
+    J_\mu = r_{\mu} + \gamma P_{\mu} J_\mu.
+    \implies
+    \left(\mathbb{I}-\gamma P_{\mu}\right) J_\mu = r_{\mu}.
+\]
+Given that the underlying Markov chain \( \left(\mathcal{S}, P_{\mu}\right) \) induced by \( \mu \) is ergodic, it converges to a unique stationary distribution \( d_{\mu}: \mathcal{S} \rightarrow \mathbb{R} \) such that
+\[
+    d_{\mu}(s) = \sum_{s^{\prime}} P_{\mu}(s^{\prime} \mid s) d_{\mu}(s^{\prime}),
+    \implies
+    d_{\mu} = P_{\mu}^{\top} d_{\mu}.
+\]
+
+Starting with the Bellman equation, and applying the projected Bellman operator \( \Pi \) on both sides, and using \( J = \Phi \theta_\ast \), we have
 \begin{align*}
     T_{\mu} J
      & =
@@ -33,49 +56,49 @@ Starting with the Bellman equation, and applying the projected Bellman operator 
     \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} J
     \\
     \implies
-    \Pi T_{\mu} \Phi \theta_{*}
+    \Pi T_{\mu} \Phi \theta_\ast
      & =
-    \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} \Phi \theta_{*}
+    \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} \Phi \theta_\ast
     \\ & =
-    \Phi \cancel{{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1}} \cancel{\left(\Phi^{\top} D_{\mu} \Phi\right)} \theta_{*}
+    \Phi \cancel{{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1}} \cancel{\left(\Phi^{\top} D_{\mu} \Phi\right)} \theta_\ast
     =
-    \Phi \theta_{*}
+    \Phi \theta_\ast
     \\
     \therefore
-    \Pi T_{\mu} \Phi \theta_{*}
+    \Pi T_{\mu} \Phi \theta_\ast
      & =
-    \Phi \theta_{*}
+    \Phi \theta_\ast
 \end{align*}
-as required, showing that \( \theta_{*} \) is the fixed point of the projected Bellman operator.
+as required, showing that \( \theta_\ast \) is the fixed point of the projected Bellman operator.
 
-Starting with \( A \theta_{*} = b \), and substituting the definitions of \( A \) and \( b \), we have
+Starting with \( A \theta_\ast = b \), and substituting the definitions of \( A \) and \( b \), we have
 \begin{align*}
     \implies
-    \Phi^{\top} D_{\mu}\left(\mathbb{I}-\gamma P_{\mu}\right) \Phi \theta_{*}
+    \Phi^{\top} D_{\mu}\left(\mathbb{I}-\gamma P_{\mu}\right) \Phi \theta_\ast
      & =
     \Phi^{\top} D_{\mu} r_{\mu}
     \\
     \implies
-    \Phi^{\top} D_{\mu} \Phi \theta_{*} - \gamma \Phi^{\top} D_{\mu} P_{\mu} \Phi \theta_{*}
+    \Phi^{\top} D_{\mu} \Phi \theta_\ast - \gamma \Phi^{\top} D_{\mu} P_{\mu} \Phi \theta_\ast
      & =
     \Phi^{\top} D_{\mu} r_{\mu}
     \\
     \implies
-    \Phi^{\top} D_{\mu} \Phi \theta_{*}
+    \Phi^{\top} D_{\mu} \Phi \theta_\ast
      & =
-    \Phi^{\top} D_{\mu} r_{\mu} + \gamma \Phi^{\top} D_{\mu} P_{\mu} \Phi \theta_{*}
+    \Phi^{\top} D_{\mu} r_{\mu} + \gamma \Phi^{\top} D_{\mu} P_{\mu} \Phi \theta_\ast
     \\ & =
-    \Phi^{\top} D_{\mu} \left( r_{\mu} + \gamma P_{\mu} \Phi \theta_{*} \right)
+    \Phi^{\top} D_{\mu} \left( r_{\mu} + \gamma P_{\mu} \Phi \theta_\ast \right)
     =
-    \Phi^{\top} D_{\mu} T_{\mu} \Phi \theta_{*}
+    \Phi^{\top} D_{\mu} T_{\mu} \Phi \theta_\ast
 \end{align*}
 
 \begin{align*}
-    \Pi T_{\mu} \Phi \theta_{*}
+    \Pi T_{\mu} \Phi \theta_\ast
      & =
-    \Pi \left( r_{\mu} + \gamma P_{\mu} \Phi \theta_{*} \right)
+    \Pi \left( r_{\mu} + \gamma P_{\mu} \Phi \theta_\ast \right)
     =
-    \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} \left( r_{\mu} + \gamma P_{\mu} \Phi \theta_{*} \right)
+    \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} \left( r_{\mu} + \gamma P_{\mu} \Phi \theta_\ast \right)
     \\ & =
-    \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} r_{\mu} + \gamma \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} P_{\mu} \Phi \theta_{*}
+    \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} r_{\mu} + \gamma \Phi{\left(\Phi^{\top} D_{\mu} \Phi\right)}^{-1} \Phi^{\top} D_{\mu} P_{\mu} \Phi \theta_\ast
 \end{align*}
