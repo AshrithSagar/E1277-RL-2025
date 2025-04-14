@@ -42,6 +42,56 @@ Given that the underlying Markov chain \( \left(\mathcal{S}, P_{\mu}\right) \) i
     d_{\mu} = P_{\mu}^{\top} d_{\mu}.
 \]
 
+Since we want a \( \theta_\ast \) such that \( J_\mu \approx \Phi \theta_\ast \), we start by posing this as an optimization problem, i.e., we want to find some \( \theta \) such that
+\[
+    f(\theta) = \frac{1}{2} \Vert J_\mu - \Phi \theta \Vert_{D_{\mu}}^2
+    = \frac{1}{2} \sum_{s} d_{\mu}(s) {\left[ J_\mu(s) - \phi^\top(s) \theta \right]}^2
+\]
+is minimized.
+This is how we define the optimality for how we want to approximate the value function \( J_\mu \) with a smaller dimensional representation \( \Phi \theta \).
+For such a function \( f(\theta) \), we can find the optimal \( \theta_\ast \) by setting the gradient of \( f(\theta) \) to zero, i.e.,
+\[
+    \nabla f(\theta_\ast) = - \sum_{s} d_{\mu}(s) \left[ J_\mu(s) - \phi^\top(s) \theta_\ast \right] \phi(s) = 0
+\]
+\[
+    \implies
+    \sum_{s} d_{\mu}(s) J_\mu(s) \phi(s) = \sum_{s} d_{\mu}(s) {\left[ \phi^\top(s) \theta_\ast \right]} \phi(s)
+\]
+This is the projected Bellman equation, we're interested to find.
+In matrix form, we have
+\begin{align*}
+    \text{LHS}
+     & \to
+    \underbrace{\Phi^\top}_{d \times S} \overbrace{D_\mu}^{S \times S} \underbrace{J_\mu}_{S \times 1}
+    \\
+    \text{RHS}
+     & \to
+    \sum_{s} d_\mu(s) \phi(s) \phi^\top(s) \theta = \underbrace{\Phi^\top}_{d \times S} \overbrace{D_\mu}^{S \times S} \underbrace{\Phi}_{S \times d} \overbrace{\theta}^{d \times 1}
+\end{align*}
+\begin{align*}
+    \implies
+    \Phi^\top D_\mu J_\mu
+     & =
+    \Phi^\top D_\mu \Phi \theta_\ast
+    \\
+    \implies
+    \theta_\ast
+     & =
+    {(\Phi^\top D_\mu \Phi)}^{-1} \Phi^\top D_\mu J_\mu
+    \\
+    \implies
+    \Phi \theta_\ast
+     & =
+    \Phi {(\Phi^\top D_\mu \Phi)}^{-1} \Phi^\top D_\mu J_\mu
+\end{align*}
+
+This such \( \Phi \theta_\ast \) is closest approximation to \( J_\mu \) in the column space of \( \Phi \), \(\operatorname{col}(\Phi) \).
+
+Now, we can appropriately define the project Bellman operator as
+\[
+    \Pi J = \Phi {(\Phi^\top D_\mu \Phi)}^{-1} \Phi^\top D_\mu J
+\]
+
 Starting with the Bellman equation, and applying the projected Bellman operator \( \Pi \) on both sides, and using \( J = \Phi \theta_\ast \), we have
 \begin{align*}
     T_{\mu} J
