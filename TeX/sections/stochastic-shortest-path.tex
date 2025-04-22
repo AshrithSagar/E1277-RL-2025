@@ -2,6 +2,13 @@
 
 \subsection{Bellman equation for SSPP}
 
+\begin{equation}
+    V(s) = \sum_{s' \in S} P(s' | s, a) \left( R(s, a) + \gamma V(s') \right)
+\end{equation}
+\begin{equation}
+    Q(s, a) = \sum_{s' \in S} P(s' | s, a) \left( R(s, a) + \gamma V(s') \right)
+\end{equation}
+
 \subsection{Value iteration}
 
 \subsection{Policy iteration}

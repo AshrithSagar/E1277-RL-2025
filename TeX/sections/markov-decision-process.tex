@@ -1,9 +1,57 @@
-\section{Markov Decision Processes (MDPs)}
+\section{Markov decision processes}
 
-\subsection{Markov Processes}
+\subsection{Markov processes}
 
-\subsection{Markov Reward Processes (MRPs)}
+Markov property:
+The Markov property states that the future state of a process depends only on the present state and not on the past states.
+Formally, for a Markov process, the conditional probability of the future state given the present state and past states is equal to the conditional probability of the future state given only the present state.
+\begin{equation}
+    P(X_{t+1} | X_t, X_{t-1}, \ldots, X_0) = P(X_{t+1} | X_t)
+\end{equation}
 
-\subsection{Markov Decision Processes (MDPs)}
+\subsection{Markov reward processes (MRP)}
 
-\subsection{Dynamic Programming (DP)}
+A Markov reward process is a Markov process with an associated reward function.
+The reward function assigns a numerical value to each state, representing the immediate reward received upon entering that state.
+The expected reward at time \( t \) is given by:
+\begin{equation}
+    R_t = \sum_{s \in S} P(s | X_t) R(s)
+\end{equation}
+where \( R(s) \) is the reward associated with state \( s \), and \( P(s | X_t) \) is the probability of being in state \( s \) at time \( t \).
+
+\subsection{Markov decision processes (MDP)}
+
+A Markov decision process is a Markov reward process with an associated action space and transition probabilities.
+An MDP consists of:
+\begin{itemize}
+    \item A set of states \( \mathcal{S} \)
+    \item A set of actions \( \mathcal{A} \)
+    \item A transition probability function \( P(s' | s, a) \) that gives the probability of transitioning to state \( s' \) given the current state \( s \) and action \( a \)
+    \item A reward function \( R(s, a) \) that gives the expected reward received upon taking action \( a \) in state \( s \)
+    \item A discount factor \( \gamma \) that determines the importance of future rewards
+    \item A policy \( \pi(a | s) \) that gives the probability of taking action \( a \) in state \( s \)
+\end{itemize}
+
+\subsection{Dynamic programming (DP)}
+
+\subsubsection{Value function}
+
+The value function \( V(s) \) of a state \( s \) is the expected return (cumulative reward) starting from state \( s \) and following a policy \( \pi \):
+\begin{equation}
+    V(s) = \mathbb{E} \left[ \sum_{t=0}^{\infty} \gamma^t R_t | s_0 = s, \pi \right]
+\end{equation}
+where \( R_t \) is the reward received at time \( t \), and \( \gamma \) is the discount factor.
+
+Similarly, the action-value function \( Q(s, a) \) is the expected return starting from state \( s \), taking action \( a \), and following policy \( \pi \):
+\begin{equation}
+    Q(s, a) = \mathbb{E} \left[ \sum_{t=0}^{\infty} \gamma^t R_t | s_0 = s, a_0 = a, \pi \right]
+\end{equation}
+
+The value function can be expressed in terms of the action-value function:
+\begin{equation}
+    V(s) = \sum_{a \in \mathcal{A}} \pi(a | s) Q(s, a)
+\end{equation}
+The action-value function can be expressed in terms of the value function:
+\begin{equation}
+    Q(s, a) = R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P(s' | s, a) V(s')
+\end{equation}
