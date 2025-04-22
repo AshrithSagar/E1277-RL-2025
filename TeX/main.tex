@@ -1,0 +1,32 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, mathtools}
+\usepackage{enumitem, geometry, graphicx, titlesec, hyperref}
+
+\geometry{
+  a4paper,
+  left=1.2cm,
+  right=1.2cm,
+  top=2cm,
+  bottom=2cm,
+}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+}
+\setlist{noitemsep}
+
+\begin{document}
+\input{sections/titlepage.tex}
+\tableofcontents
+\input{sections/multi-armed-bandits.tex}
+\input{sections/markov-decision-process.tex}
+\input{sections/stochastic-shortest-path.tex}
+\input{sections/discounted-cost-problems.tex}
+\input{sections/td-learning.tex}
+\input{sections/q-learning.tex}
+\input{sections/function-approximation.tex}
+\input{sections/policy-gradient.tex}
+
+\end{document}
