@@ -1,4 +1,4 @@
-\section{Markov decision processes}
+\section{Finite Markov decision processes}
 
 \subsection{Markov processes}
 
@@ -31,27 +31,3 @@ An MDP consists of:
     \item A discount factor \( \gamma \) that determines the importance of future rewards
     \item A policy \( \pi(a | s) \) that gives the probability of taking action \( a \) in state \( s \)
 \end{itemize}
-
-\subsection{Dynamic programming (DP)}
-
-\subsubsection{Value function}
-
-The value function \( V(s) \) of a state \( s \) is the expected return (cumulative reward) starting from state \( s \) and following a policy \( \pi \):
-\begin{equation}
-    V(s) = \mathbb{E} \left[ \sum_{t=0}^{\infty} \gamma^t R_t | s_0 = s, \pi \right]
-\end{equation}
-where \( R_t \) is the reward received at time \( t \), and \( \gamma \) is the discount factor.
-
-Similarly, the action-value function \( Q(s, a) \) is the expected return starting from state \( s \), taking action \( a \), and following policy \( \pi \):
-\begin{equation}
-    Q(s, a) = \mathbb{E} \left[ \sum_{t=0}^{\infty} \gamma^t R_t | s_0 = s, a_0 = a, \pi \right]
-\end{equation}
-
-The value function can be expressed in terms of the action-value function:
-\begin{equation}
-    V(s) = \sum_{a \in \mathcal{A}} \pi(a | s) Q(s, a)
-\end{equation}
-The action-value function can be expressed in terms of the value function:
-\begin{equation}
-    Q(s, a) = R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P(s' | s, a) V(s')
-\end{equation}
