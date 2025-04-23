@@ -3,29 +3,6 @@
 Collection of algorithms that can be used to compute optimal policies.
 Assumes a perfect model of the environment as a Markov decision process (MDP), but this condition is relaxed as we move on.
 
-\subsection{Bellman optimality equations}
-
-\begin{equation}
-    \begin{aligned}
-        v_*(s)
-         & =
-        \max_{a} \mathbb{E} \big[ R_{t+1} + \gamma v_*(S_{t+1}) \;\big|\; S_t = s, A_t = a \big]
-        \\ & =
-        \max_{a} \sum_{s', r} p(s', r | s, a) \Big[ r + \gamma v_*(s') \Big]
-        , \qquad \forall s \in \mathcal{S}
-    \end{aligned}
-\end{equation}
-\begin{equation}
-    \begin{aligned}
-        q_*(s, a)
-         & =
-        \mathbb{E} \big[ R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a') \;\big|\; S_t = s, A_t = a \big]
-        \\ & =
-        \sum_{s', r} p(s', r | s, a) \Big[ r + \gamma \max_{a'} q_*(s', a') \Big]
-        , \qquad \forall s \in \mathcal{S}, a \in \mathcal{A}(s), s' \in \mathcal{S}^+
-    \end{aligned}
-\end{equation}
-
 \subsection{Generalized policy iteration (GPI)}
 
 \subsection{Value iteration}
