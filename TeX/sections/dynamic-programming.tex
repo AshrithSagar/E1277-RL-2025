@@ -2,8 +2,90 @@
 
 Collection of algorithms that can be used to compute optimal policies.
 Assumes a perfect model of the environment as a Markov decision process (MDP), but this condition is relaxed as we move on.
+DP algorithms are obtained by turning Bellman equations into assignments, i.e., into update rules for improving approximations of the desired value functions.
 
-\subsection{Generalized policy iteration (GPI)}
+\subsection{Policy evaluation (PE)}
+
+Also referred to as the \textit{prediction problem}, involves computing the state-value function \( v_\pi \) for an arbitrary (but fixed) policy \( \pi \).
+\begin{equation}
+    \begin{aligned}
+        v_\pi(s)
+         & =
+        \mathbb{E}_{\pi} \big[ R_{t+1} + \gamma v_\pi(S_{t+1}) \;\big|\; S_t = s \big]
+        \\ & =
+        \sum_{a} \pi(a \mid s) \sum_{s', r} p(s', r | s, a) \Big[ r + \gamma v_\pi(s') \Big]
+    \end{aligned}
+\end{equation}
+The existence and uniqueness of \( v_\pi \) is guarenteed by either having \( \gamma < 1 \) or ensuring eventual termination from all states under policy \( \pi \).
+
+\textit{Iterative policy evaluation algorithm}:
+\begin{equation}
+    \begin{aligned}
+        v_{k+1}(s)
+         & =
+        \mathbb{E}_{\pi} \big[ R_{t+1} + \gamma v_k(S_{t+1}) \;\big|\; S_t = s \big]
+        \\ & =
+        \sum_{a} \pi(a \mid s) \sum_{s', r} p(s', r | s, a) \Big[ r + \gamma v_k(s') \Big]
+        , \qquad \forall s \in \mathcal{S}
+    \end{aligned}
+\end{equation}
+
+\subsection{Policy improvement (PI)}
+
+Computes a new policy \( \pi' \), given the state-value function \( v_\pi \) of the old policy \( \pi \).
+\begin{equation}
+    \begin{aligned}
+        q_\pi(s, a)
+         & =
+        \mathbb{E}_{\pi} \big[ R_{t+1} + \gamma v_\pi(S_{t+1}) \;\big|\; S_t = s, A_t = a \big]
+        \\ & =
+        \sum_{s', r} p(s', r | s, a) \Big[ r + \gamma v_\pi(s') \Big]
+    \end{aligned}
+\end{equation}
+
+\subsubsection{Policy improvement theorem (PIT)}
+
+For any pair of deterministic policies \( \pi, \pi' \) such that \( q_\pi(s, \pi'(s)) \geq v_\pi(s), \ \forall s \in \mathcal{S} \), then the policy \( \pi' \) is at least as good as, or better than policy \( \pi \), i.e., \( v_{\pi'}(s) \geq v_\pi(s), \ \forall s \in \mathcal{S} \).
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+            v_{\pi}(s)
+             & \leq
+            q_{\pi}(s, \pi'(s))
+            =
+            \mathbb{E}_{\pi} \big[ R_{t+1} + \gamma v_{\pi}(S_{t+1}) \;\big|\; S_t = s, A_t = \pi'(s) \big]
+            \\ & =
+            \mathbb{E}_{\pi'} \big[ R_{t+1} + \gamma v_{\pi}(S_{t+1}) \;\big|\; S_t = s \big]
+            \\ & \leq
+            \mathbb{E}_{\pi'} \big[ R_{t+1} + \gamma q_{\pi}(S_{t+1}, \pi'(S_{t+1})) \;\big|\; S_t = s \big]
+            \\ & =
+            \mathbb{E}_{\pi'} \big[ R_{t+1} + \gamma \mathbb{E} \big[ R_{t+2} + \gamma v_{\pi}(S_{t+2}) \;\big|\; S_{t+1}, A_{t+1} = \pi'(S_{t+1}) \big] \;\big|\; S_t = s \big]
+            \\ & =
+            \mathbb{E}_{\pi'} \big[ R_{t+1} + \gamma R_{t+2} + \gamma^2 v_{\pi}(S_{t+2}) \;\big|\; S_t = s \big]
+            \\ & \leq
+            \mathbb{E}_{\pi'} \big[ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots \;\big|\; S_t = s \big]
+            = v_{\pi'}(s)
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+Note the use of the Markov property as well.
+
+A greedy policy \( \pi' \) with respect to the value function of the original policy \( \pi \) also satisfies the PIT,
+\begin{equation}
+    \pi'(s) = \arg\max_{a} q_\pi(s, a)
+\end{equation}
+where ties are broken arbitrarily.
+
+Policy improvement thus gives a strictly better policy except when the original policy is already optimal.
+
+\subsection{Policy iteration}
+
+Finding the optimal policy \( \pi^* \) by iteratively applying the policy evaluation and policy improvement steps, until convergence, i.e., starting from an arbitrary policy \( \pi_0 \), and performing
+\begin{equation}
+    \pi_0 \xrightarrow{\text{PE}} v_{\pi_0} \xrightarrow{\text{PI}} \pi_1 \xrightarrow{\text{PE}} v_{\pi_1} \xrightarrow{\text{PI}} \pi_2 \xrightarrow{\text{PE}} \dots \xrightarrow{\text{PI}} \pi^* \xrightarrow{\text{PE}} v_{\pi^*}
+\end{equation}
+
+A finite MDP only has a finite number of deterministic policies, and by PIT, we're quarenteed to improve the policy at each step, thereby the algorithm must converge to an optimal policy and optimal value function in a finite number of steps.
 
 \subsection{Value iteration}
 
@@ -20,12 +102,8 @@ Assumes a perfect model of the environment as a Markov decision process (MDP), b
 
 Combines one sweep of policy evaluation and one sweep of policy improvement, in each of its sweeps.
 
-\subsection{Policy iteration}
-
-\subsubsection{Policy evaluation}
-
-\subsubsection{Policy improvement}
-
 \subsection{Modified policy iteration}
 
 \subsection{Multi-stage look ahead policy iteration}
+
+\subsection{Generalized policy iteration (GPI)}
