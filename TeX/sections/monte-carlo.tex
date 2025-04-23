@@ -1,1 +1,27 @@
 \section{Monte Carlo methods (MC)}
+
+Each occurrence of state \( s \) in an episode constitutes a \textit{visit} to \( s \).
+
+MC methods do not bootstrap \psecref{sec:bootstrapping} and the estimates for each state are independent.
+As a result, these methods are also useful when one needs to only estimate the values for a subset of the state space.
+
+Can be either \textit{on-policy} and \textit{off-policy}.
+
+\subsection{MC Prediction}
+
+\subsubsection{First-visit MC method}
+
+The \textit{first-visit} of a state \( s \) in an episode is the first time that \( s \) occurs in that episode.
+The \textit{first-visit method} estimates \( v_\pi(s) \) by averaging the returns \( G_t \) of the first visits to \( s \) in an episode.
+
+The estimated \( V(s) \) converges to the true value \( v_\pi(s) \) as the number of visits to \( s \) goes to infinity.
+Each return is an independent and identically distributed (i.i.d.) estimate of \( v_\pi(s) \) with finite variance, and by the law of large numbers, the average converges to the expected value.
+Note that the average here is an unbiased estimate of \( v_\pi(s) \), and the standard deviation of the average is \( \sigma / \sqrt{N} \), where \( N \) is the number of visits to \( s \) and \( \sigma^2 \) is the variance of the returns, \( \therefore V(s) \to v_\pi(s) \text{ and } \operatorname{Var}[V(s)] \to 0 \text{ as } N \to \infty \).
+
+\subsubsection{Every-visit MC method}
+
+The \textit{every-visit method} estimates \( v_\pi(s) \) by averaging the returns \( G_t \) of all visits to \( s \) in an episode.
+
+The estimates converge quadratically to the true value \( v_\pi(s) \) as the number of visits to \( s \) goes to infinity.
+
+\subsection{MC Control}
