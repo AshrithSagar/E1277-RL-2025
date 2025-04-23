@@ -17,9 +17,14 @@
   linkcolor=black,
   citecolor=black,
 }
+\titlespacing*{\section}{0pt}{2em}{0.2em}
+\titlespacing*{\subsection}{0pt}{1em}{0.2em}
+\titlespacing*{\subsubsection}{0pt}{1em}{0.2em}
 \setlength{\parskip}{0pt}
 \setlength{\parindent}{0pt}
 \setlist{noitemsep}
+
+\newcommand{\psecref}[1]{(\S\ref{#1})}
 
 \begin{document}
 \input{sections/titlepage.tex}

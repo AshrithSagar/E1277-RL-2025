@@ -18,7 +18,8 @@ Also referred to as the \textit{prediction problem}, involves computing the stat
 \end{equation}
 The existence and uniqueness of \( v_\pi \) is guarenteed by either having \( \gamma < 1 \) or ensuring eventual termination from all states under policy \( \pi \).
 
-\textit{Iterative policy evaluation algorithm}:
+\subsubsection{Iterative policy evaluation algorithm}\label{sec:iterative-policy-evaluation}
+
 \begin{equation}
     \begin{aligned}
         v_{k+1}(s)
@@ -68,7 +69,7 @@ For any pair of deterministic policies \( \pi, \pi' \) such that \( q_\pi(s, \pi
         \end{aligned}
     \end{equation*}
 \end{proof}
-Note the use of the Markov property as well.
+Note the use of the Markov property here.
 
 A greedy policy \( \pi' \) with respect to the value function of the original policy \( \pi \) also satisfies the PIT,
 \begin{equation}
@@ -87,8 +88,12 @@ Finding the optimal policy \( \pi^* \) by iteratively applying the policy evalua
 
 A finite MDP only has a finite number of deterministic policies, and by PIT, we're quarenteed to improve the policy at each step, thereby the algorithm must converge to an optimal policy and optimal value function in a finite number of steps.
 
+Note that each policy evaluation step itself is an iterative computation \psecref{sec:iterative-policy-evaluation} of the state-value function \( v_{\pi_k} \) for the current policy \( \pi_k \), and is performed until convergence, or for some fixed number of iterations.
+Performs multiple sweeps of policy evaluation before performing a single sweep of policy improvement.
+
 \subsection{Value iteration}
 
+Combines one sweep of policy evaluation and one sweep of policy improvement, in each of its sweeps.
 \begin{equation}
     \begin{aligned}
         v_{k+1}(s)
@@ -100,10 +105,23 @@ A finite MDP only has a finite number of deterministic policies, and by PIT, we'
     \end{aligned}
 \end{equation}
 
-Combines one sweep of policy evaluation and one sweep of policy improvement, in each of its sweeps.
+\subsection{Generalized policy iteration (GPI)}
 
-\subsection{Modified policy iteration}
+A very general framework for alternating policy evaluation and policy improvement steps.
+The value function stabilizes only when it is consistent with the current policy, and the policy stabilizes only when it is greedy with respect to the current value function.
+When both stabilize, we have an optimal policy and an optimal value function, by the Bellman optimality equations \psecref{sec:bellman-optimality-equations}.
+
+\vspace*{-0.5em}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{figures/images/gpi.png}
+\end{figure}
+\vspace*{-0.5em}
+
+Styles: Jacobi-style (synchronous), Gauss–Seidel-style (in-place)
+
+Asynchronous DP methods update states in-place and in an arbitrary order, making them suitable when sweeping the entire state space is impractical.
 
 \subsection{Multi-stage look ahead policy iteration}
 
-\subsection{Generalized policy iteration (GPI)}
+The \( m \)-stage look ahead problem involves finding an optimal policy for an \( m \)-stage DP.\@
