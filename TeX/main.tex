@@ -24,7 +24,8 @@
 \setlength{\parindent}{0pt}
 \setlist{noitemsep, topsep=0pt}
 
-\newcommand{\psecref}[1]{(\S\ref{#1})}
+\newcommand{\psecref}[1]{(\hyperref[#1]{\S\ref*{#1}})}
+\newcommand{\peqref}[1]{(\hyperref[#1]{Eq.~\ref*{#1}})}
 
 \begin{document}
 \input{sections/titlepage.tex}

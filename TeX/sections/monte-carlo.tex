@@ -1,13 +1,13 @@
 \section{Monte Carlo methods (MC)}
 
-Each occurrence of state \( s \) in an episode constitutes a \textit{visit} to \( s \).
-
 MC methods do not bootstrap \psecref{sec:bootstrapping} and the estimates for each state are independent.
 As a result, these methods are also useful when one needs to only estimate the values for a subset of the state space.
 
-Can be either \textit{on-policy} and \textit{off-policy}.
+Are model-free \psecref{sec:model-free-learning}, and can be either \textit{on-policy} and \textit{off-policy} \psecref{sec:policies}.
 
 \subsection{MC Prediction}
+
+Each occurrence of state \( s \) in an episode constitutes a \textit{visit} to \( s \).
 
 \subsubsection{First-visit MC method}
 
@@ -24,4 +24,27 @@ The \textit{every-visit method} estimates \( v_\pi(s) \) by averaging the return
 
 The estimates converge quadratically to the true value \( v_\pi(s) \) as the number of visits to \( s \) goes to infinity.
 
+\subsubsection{Constant-\texorpdfstring{\( \alpha \)}{alpha} MC}
+
+\begin{equation}
+    V(s) \leftarrow V(s) + \alpha \Big[ G_t - V(s) \Big]
+\end{equation}
+where \( \alpha \) is a constant step-size parameter.
+
+The target here is return \( G_t \), which is only known after episode termination, hence MC methods must wait until the episode terminates before updating value estimates.
+
+Written in an other way, we have
+\begin{equation}\label{eq:mc-update-rule-2}
+    V(s) \leftarrow V(s) + \alpha \Big[ R_{t+1} + \gamma G_{t+1} - V(s) \Big]
+\end{equation}
+
+The MC error is given by
+\begin{equation}\label{eq:mc-error}
+    \delta_t \doteq G_t - V(S_t)
+\end{equation}
+
 \subsection{MC Control}
+
+Maintaining sufficient exploration is an issue in MC control methods.
+
+Using \( \varepsilon \)-soft policies allows to drop the exploration starts requirement.

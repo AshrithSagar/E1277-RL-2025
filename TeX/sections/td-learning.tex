@@ -1,6 +1,37 @@
 \section{Temporal difference learning (TD)}
 
+TD learning is a combination of MC and DP ideas; are model-free \psecref{sec:model-free-learning} and they bootstrap \psecref{sec:bootstrapping}, i.e., TD methods combine the sampling of MC with the bootstrapping of DP.
+
 \subsection{TD\texorpdfstring{\( (0) \)}{ (0) } algorithm}
+
+AKA \textit{one-step TD}, the target here is \( R_{t+1} + \gamma V(S_{t+1}) \), making it a bootstrapping method \psecref{sec:bootstrapping}.
+\begin{equation}
+    V(S_t) \leftarrow V(S_t) + \alpha \Big[ R_{t+1} + \gamma V(S_{t+1}) - V(S_t) \Big]
+\end{equation}
+Compare this with the MC update rule \peqref{eq:mc-update-rule-2}.
+
+The \textit{TD error} here is given by
+\begin{equation}\label{eq:td-error-TD0}
+    \delta_t \doteq R_{t+1} + \gamma V(S_{t+1}) - V(S_t)
+\end{equation}
+
+Note that if \( V \) does not change during an epsiode (not the case in general TD\( (0) \)), then the MC errors \peqref{eq:mc-error} can be written as a sum of TD errors \peqref{eq:td-error-TD0}.
+\begin{align*}
+    \underbrace{ G_t - V(S_t) }_{\delta_{t}^{\text{MC}}}
+     & =
+    R_t + \gamma G_{t+1} - V(S_t) + \gamma V(S_{t+1}) - \gamma V(S_{t+1})
+    =
+    \delta_{t}^{\text{TD}} + \gamma \underbrace{ (G_{t+1} - V(S_{t+1})) }_{\delta_{t+1}^{\text{MC}}}
+    \\
+    \implies
+    \delta_{t}^{\text{MC}}
+     & =
+    \delta_{t}^{\text{TD}} + \gamma \delta_{t+1}^{\text{MC}}
+    \implies
+    \delta_{t}^{\text{MC}}
+    =
+    \sum_{k = t}^{T-1} \gamma^{k-t} \delta_{k}^{\text{TD}}
+\end{align*}
 
 \subsection{TD\texorpdfstring{\( (\lambda) \)}{ (lambda) } algorithm}
 

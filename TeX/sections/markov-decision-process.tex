@@ -225,17 +225,7 @@ Any policy that assigns nonzero probability only to the actions at which the max
 Any policy that is greedy with respect to the
 optimal evaluation function \( v_* \) is an optimal policy.
 
-\subsection{Policies}
-
-\textit{Off-policy} methods generate episodes using a different policy \( b \) (\textit{behavior policy}) and uses these episodes to improve the current policy \( \pi \) (\textit{target policy}).
-Are often of greater variance and are slower to converge.
-
-\textit{Coverage assumption}:
-\begin{equation}
-    \pi(a \mid s) > 0 \implies b(a \mid s) > 0, \quad \forall a \in \mathcal{A}(s), \forall s \in \mathcal{S}
-\end{equation}
-
-\textit{On-policy} methods estimates the value of the current policy \( \pi \) and improves it by using the same policy to generate the episodes, i.e., the behavior policy is the same as the target policy.
+\subsection{Policies}\label{sec:policies}
 
 A \textit{stationary policy} is a policy that does not change over time.
 
@@ -245,6 +235,8 @@ A \textit{deterministic policy} is a policy that selects a single action in a st
 \begin{equation}
     \pi(s) = a, \quad \forall s \in \mathcal{S}, a \in \mathcal{A}(s)
 \end{equation}
+
+In other words, the probability distribution can be viewed as being one-hot encoded.
 
 A \textit{random policy} is a policy that selects a random action in a state.
 
@@ -278,3 +270,38 @@ An \textit{epsilon-soft policy} is combination of a soft policy and an epsilon-g
 \begin{equation}
     \pi(a \mid s) \geq \frac{\varepsilon}{|\mathcal{A}(s)|}, \quad \forall a \in \mathcal{A}(s), \forall s \in \mathcal{S}, \varepsilon > 0
 \end{equation}
+
+\subsection{Terminology}
+
+\subsubsection{Incremental learning}
+
+An update rule of the form
+\begin{equation}
+    \text{NewEstimate} \leftarrow \text{OldEstimate} + \text{StepSize} \underbrace{ \Big[ \text{Target} - \text{OldEstimate} \Big] }_{\text{Error in the estimate}}
+\end{equation}
+
+\subsubsection{Bootstrapping}\label{sec:bootstrapping}
+
+The process of updating the estimate values based in part on other learned estimates, without waiting for a final outcome.
+
+\subsubsection{Model-free learning}\label{sec:model-free-learning}
+
+Learning directly from raw experience without a model of the environment’s dynamics.
+
+\subsubsection{Model-based learning}
+
+Learning from a model of the environment’s dynamics, i.e., need \( p(s', r \mid s, a) \).
+
+\subsubsection{Off-policy learning}
+
+\textit{Off-policy} methods generate episodes using a different policy \( b \) (\textit{behavior policy}) and uses these episodes to improve the current policy \( \pi \) (\textit{target policy}).
+Are often of greater variance and are slower to converge.
+
+\textit{Coverage assumption}:
+\begin{equation}
+    \pi(a \mid s) > 0 \implies b(a \mid s) > 0, \quad \forall a \in \mathcal{A}(s), \forall s \in \mathcal{S}
+\end{equation}
+
+\subsubsection{On-policy learning}
+
+\textit{On-policy} methods estimates the value of the current policy \( \pi \) and improves it by using the same policy to generate the episodes, i.e., the behavior policy is the same as the target policy.
