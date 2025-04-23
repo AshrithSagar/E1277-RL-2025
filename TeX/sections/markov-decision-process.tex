@@ -106,8 +106,60 @@ If the current state is \( S_t \), and actions are selected according to a stoch
 function \( p \)?
 
 \textbf{Solution}:
-\begin{equation*}
-    \mathbb{E}_{\pi} \big[ R_{t+1} \mid S_t \big] = \sum_{a \in \mathcal{A}(S_t)} \pi(a \mid S_t) \sum_{s' \in \mathcal{S}} p(s', r \mid S_t, a)
-\end{equation*}
+\begin{align*}
+    \mathbb{E}_{\pi} \big[ R_{t+1} \mid S_t = s \big]
+     & =
+    \sum_{r \in \mathcal{R}} r
+    \Pr \big[ R_{t+1} = r \mid S_t = s \big]
+    =
+    \sum_{r \in \mathcal{R}} r
+    \sum_{s' \in \mathcal{S}}
+    \Pr \big[ S_{t+1} = s', R_{t+1} = r \mid S_t = s \big]
+    \\ & =
+    \sum_{r \in \mathcal{R}} r
+    \sum_{s' \in \mathcal{S}}
+    \sum_{a \in \mathcal{A}(s)}
+    \underbrace{ \Pr \big[ S_{t+1} = s', R_{t+1} = r \mid S_t = s, A_t = a \big] }_{p(s', r \mid s, a)}
+    \underbrace{ \Pr \big[ A_t = a \mid S_t = s \big] }_{\pi(a \mid s)}
+    \\ & =
+    \sum_{r \in \mathcal{R}} r
+    \sum_{s' \in \mathcal{S}}
+    \sum_{a \in \mathcal{A}(s)}
+    \pi(a \mid s) \; p(s', r \mid s, a)
+    =
+    \sum_{a} \pi(a \mid s)
+    \sum_{s', r} r \; p(s', r \mid s, a)
+\end{align*}
 
 \subsubsection{Value function}
+
+The \textit{state-value function} \( v_\pi(s) \) of a state \( s \) under a policy \( \pi \) is the expected return when starting from state \( s \) and following policy \( \pi \) thereafter,
+\begin{equation}
+    v_\pi(s) \doteq \mathbb{E}_{\pi} \big[ G_t \mid S_t = s \big]
+\end{equation}
+
+The \textit{action-value function} \( q_\pi(s, a) \) of taking an action \( a \) in state \( s \) under a policy \( \pi \) is the expected return starting from state \( s \), taking action \( a \), and following policy \( \pi \) thereafter,
+\begin{equation}
+    q_\pi(s, a) \doteq \mathbb{E}_{\pi} \big[ G_t \mid S_t = s, A_t = a \big]
+\end{equation}
+
+\begin{equation}
+    v_\pi(s) = \sum_{a \in \mathcal{A}(s)} \pi(a \mid s) q_\pi(s, a)
+    , \quad \forall s \in \mathcal{S}
+\end{equation}
+\begin{equation}
+    q_\pi(s, a) = r(s, a) + \sum_{s' \in \mathcal{S}} p(s' \mid s, a) v_\pi(s')
+    , \quad \forall s \in \mathcal{S}, a \in \mathcal{A}(s)
+\end{equation}
+
+\subsubsection{Bellman equations}
+
+A recursive relation between the value functions.
+\begin{equation}
+    v_\pi(s) = \sum_{a} \pi(a \mid s) \sum_{s', r} p(s', r \mid s, a) \Big[ r + \gamma v_\pi(s') \Big]
+    , \quad \forall s \in \mathcal{S}
+\end{equation}
+The value function \( v_\pi \) is the unique solution to its Bellman equation.
+
+\textbf{Exercise 3.15~\cite{Sutton1998}}:
+Adding a constant \( c \) to all the rewards adds a constant \( v_c \) to the values of all states and does not affect the relative values of any states under any policies.
