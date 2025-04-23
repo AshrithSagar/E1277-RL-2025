@@ -23,7 +23,9 @@ where \( R(s) \) is the reward associated with state \( s \), and \( P(s \mid X_
 
 A Markov decision process is a Markov reward process with an associated action space and transition probabilities.
 
-The MDP framework is an abstraction of the problem of goal-directed learning from interaction.
+\subsection{The MDP framework}
+
+The MDP framework~\cite{Sutton1998} is an abstraction of the problem of goal-directed learning from interaction.
 In general, anything that cannot be controlled arbitrarily by the agent is considered to be part of its environment. Not that this refers to absolute control, not of the agent's knowledge.
 
 The time steps need not refer to fixed intervals of real time; they can refer to arbitrary successive stages of decision making and acting.
@@ -68,3 +70,44 @@ The state-transition probabilities can be computed given the dynamics of an MDP,
     r(s, a, s') \doteq \mathbb{E} \big[ R_{t} \mid S_{t-1} = s, A_{t-1} = a, S_{t} = s' \big]
     = \sum_{r \in \mathcal{R}} r \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}
 \end{equation}
+
+\subsubsection{Return}
+
+The return \( G_t \), in general, is some specific function of the reward sequence \( R_{t+1}, R_{t+2}, \ldots, R_{T} \), which are the rewards received after time step \( t \) till some \( T \).
+The discounted return is defined with a discount factor \( \gamma \in [0, 1] \) as
+\begin{equation}
+    G_t \doteq \sum_{k=t+1}^{T} \gamma^{k-t-1} R_k
+\end{equation}
+where atmost one of \( T = \infty \) or \( \gamma = 1 \) is allowed but not both.
+
+The return \( G_t \) follows a recursive relation, as
+\begin{equation}
+    G_t = R_{t+1} + \gamma G_{t+1}
+\end{equation}
+
+\subsubsection{Episodes}
+
+An episode is a sequence of time steps that ends in a terminal state.
+
+\subsubsection{Policy}
+
+A policy \( \pi: \mathcal{S} \to \mathcal{A} \) is a mapping from states to probabilities of selecting each possible action.
+\begin{equation}
+    \pi(a \mid s) \doteq \Pr \big[ A_t = a \mid S_t = s \big]
+    , \quad \forall s \in \mathcal{S}, a \in \mathcal{A}(s)
+\end{equation}
+\begin{equation}
+    \sum_{a \in \mathcal{A}(s)} \pi(a \mid s) = 1
+    , \quad \forall s \in \mathcal{S}
+\end{equation}
+
+\textbf{Exercise 3.11~\cite{Sutton1998}}:
+If the current state is \( S_t \), and actions are selected according to a stochastic policy \( \pi \), then what is the expectation of \( R_{t+1} \) in terms of \( \pi \) and the four-argument
+function \( p \)?
+
+\textbf{Solution}:
+\begin{equation*}
+    \mathbb{E}_{\pi} \big[ R_{t+1} \mid S_t \big] = \sum_{a \in \mathcal{A}(S_t)} \pi(a \mid S_t) \sum_{s' \in \mathcal{S}} p(s', r \mid S_t, a)
+\end{equation*}
+
+\subsubsection{Value function}

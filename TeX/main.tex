@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, mathtools}
-\usepackage{enumitem, geometry, graphicx, titlesec, hyperref}
+\usepackage{enumitem, geometry, graphicx, titlesec, hyperref, cite, natbib}
 
 \geometry{
   a4paper,
@@ -14,6 +14,7 @@
 \hypersetup{
   colorlinks=true,
   linkcolor=black,
+  citecolor=black,
 }
 \setlength{\parskip}{0pt}
 \setlength{\parindent}{0pt}
@@ -34,5 +35,8 @@
 \input{sections/q-learning.tex}
 \input{sections/function-approximation.tex}
 \input{sections/policy-gradient.tex}
+
+\bibliographystyle{IEEEtran}
+\bibliography{sections/references.bib}
 
 \end{document}
