@@ -1,7 +1,32 @@
 \section{Function approximation}
 
-\subsection{Stochastic approximation theory (SA)}
+In general, taking examples from a desired function and attempting to generalize from them to construct an approximation of the entire function.
+
+The approximate value function \( \hat v(s; \mathbf{w}) \approx v_\pi(s) \) is represented not as a table but as a parameterized functional form with weight vector \( \mathbf{w} \in \mathbb{R}^d \), with \( d \ll \vert \mathcal{S} \vert \).
+
+The \textit{mean square value error} \( \overline{\text{VE}} \) is defined as
+\begin{equation}
+    \overline{\text{VE}}(\mathbf{w}) \doteq \sum_{s \in \mathcal{S}} \mu(s) {\Big[ v_\pi(s) - \hat v(s; \mathbf{w}) \Big]}^2
+\end{equation}
+where \( \mu(s) \) is some state distribution, \( \mu(s) \geq 0, \ \sum_{s \in \mathcal{S}} \mu(s) = 1 \), representing how much we care about the error in each state \( s \).
+
+\( \eta(s) \to \) Number of time steps spent on average in a state \( s \) in a single episode.
+\begin{equation}
+    \mu(s) = \frac{\eta(s)}{\sum_{s'} \eta(s')}
+    , \quad \forall s \in \mathcal{S}
+\end{equation}
 
 \subsection{Stochastic gradient descent (SGD)}
+
+\begin{equation}
+    \begin{aligned}
+        \mathbf{w}_{t+1}
+         & \doteq
+        \mathbf{w}_t - \frac{1}{2} \alpha \nabla {\Big[ v_\pi(S_t) - \hat v(S_t; \mathbf{w}_t) \Big]}^2
+        \\ & =
+        \mathbf{w}_t + \alpha \Big[ v_\pi(S_t) - \hat v(S_t; \mathbf{w}_t) \Big] \nabla \hat v(S_t; \mathbf{w}_t)
+        , \quad \alpha > 0
+    \end{aligned}
+\end{equation}
 
 \subsection{Linear function approximation}

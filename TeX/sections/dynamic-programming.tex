@@ -9,6 +9,7 @@ DP uses bootstrapping \psecref{sec:bootstrapping}.
 \subsection{Policy evaluation (PE)}\label{sec:policy-evaluation}
 
 Also referred to as the \textit{prediction problem}, involves computing the state-value function \( v_\pi \) for an arbitrary (but fixed) policy \( \pi \).
+Update target: \( s \mapsto \mathbb{E}_{\pi} \big[ R_{t+1} + \gamma v_\pi(S_{t+1}) \;\big|\; S_t = s \big] \)
 \begin{equation}
     \begin{aligned}
         v_\pi(s)

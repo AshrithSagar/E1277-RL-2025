@@ -8,3 +8,19 @@
 \begin{equation}
       \mathbb{E}[X \mid Y] = \mathbb{E}_Z[\mathbb{E}[X \mid Y, Z] \mid Y]
 \end{equation}
+
+\subsection{Gradient}
+
+The \textit{gradient} of a function \( f \) with respect to a vector \( \mathbf{w} = \begin{bmatrix} w_1 & w_2 & \cdots & w_d \end{bmatrix}^\top \) is
+\begin{equation}
+      \nabla f(\mathbf{w}) \doteq
+      \begin{bmatrix}
+            \frac{\partial f(\mathbf{w})}{\partial w_1}
+             &
+            \frac{\partial f(\mathbf{w})}{\partial w_2}
+             &
+            \cdots
+             &
+            \frac{\partial f(\mathbf{w})}{\partial w_d}
+      \end{bmatrix}^\top
+\end{equation}

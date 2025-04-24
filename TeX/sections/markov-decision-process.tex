@@ -280,6 +280,11 @@ An update rule of the form
     \text{NewEstimate} \leftarrow \text{OldEstimate} + \text{StepSize} \underbrace{ \Big[ \text{Target} - \text{OldEstimate} \Big] }_{\text{Error in the estimate}}
 \end{equation}
 
+\textbf{Notation}: Update target: \( s \mapsto u \)
+
+Denotes an individual state updation, where \( s \) is the state updated and \( u \) is the update target that \( s \)'s estimated value is shifted towards.
+\( s \mapsto \dots \) denotes that an arbitrary state is being updated, whereas \( S_t \mapsto \dots \) denotes that the state encountered in actual experience, \( S_t \), is being updated.
+
 \subsubsection{Bootstrapping}\label{sec:bootstrapping}
 
 The process of updating the estimate values based in part on other learned estimates, without waiting for a final outcome.

@@ -26,12 +26,13 @@ The estimates converge quadratically to the true value \( v_\pi(s) \) as the num
 
 \subsubsection{Constant-\texorpdfstring{\( \alpha \)}{alpha} MC}
 
+Update target: \( S_t \mapsto G_t \)
 \begin{equation}
     V(s) \leftarrow V(s) + \alpha \Big[ G_t - V(s) \Big]
 \end{equation}
 where \( \alpha \) is a constant step-size parameter.
 
-The target here is return \( G_t \), which is only known after episode termination, hence MC methods must wait until the episode terminates before updating value estimates.
+The target here is the return \( G_t \), which is only known after episode termination, hence MC methods must wait until the episode terminates before updating value estimates.
 
 Written in an other way, we have
 \begin{equation}\label{eq:mc-update-rule-2}

@@ -5,6 +5,8 @@ TD learning is a combination of MC and DP ideas; are model-free \psecref{sec:mod
 \subsection{TD\texorpdfstring{\( (0) \)}{ (0) } algorithm}
 
 a.k.a.~\textit{one-step TD}, the target here is \( R_{t+1} + \gamma V(S_{t+1}) \), making it a bootstrapping method \psecref{sec:bootstrapping}.
+
+Update target: \( S_t \mapsto R_{t+1} + \gamma V(S_{t+1}) \)
 \begin{equation}
     V(S_t) \leftarrow V(S_t) + \alpha \Big[ R_{t+1} + \gamma V(S_{t+1}) - V(S_t) \Big]
 \end{equation}
@@ -135,6 +137,7 @@ where the value function \( V_{t+n-1} \) is used to correct for the missing rewa
 The \( n \)-step TD methods form a family of methods, with one-step TD methods (\( n = 1 \)) and MC methods (\( n = \infty \)) on the extremes.
 
 \textit{\( n \)-step TD algorithm}:
+Update target: \( S_t \mapsto G_{t:t+n} \)
 \begin{equation}
     V_{t+n}(S_t)
     \doteq
