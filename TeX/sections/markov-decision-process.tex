@@ -30,7 +30,7 @@ In general, anything that cannot be controlled arbitrarily by the agent is consi
 
 The time steps need not refer to fixed intervals of real time; they can refer to arbitrary successive stages of decision making and acting.
 
-\subsubsection{Dynamics}
+\subsubsection{Dynamics}\label{sec:mdp-dynamics}
 
 The \textit{dynamics} of an MDP is the function \( p: \mathcal{S} \times \mathcal{R} \times \mathcal{S} \times \mathcal{A} \to [0, 1] \) defined as
 \begin{equation}
@@ -284,18 +284,32 @@ An update rule of the form
 
 The process of updating the estimate values based in part on other learned estimates, without waiting for a final outcome.
 
+\subsubsection{Planning}
+
+Refers to any computational process that takes a model as input and produces or improves a policy for interacting with the modeled environment.
+
+\textbf{Types}: State-space planning, Plan-space planning.
+
 \subsubsection{Model}
 
 A model refers to an agent's internal representation or simulation of the environment's dynamics, i.e., \( p(s', r \mid s, a) \).
 Note that this includes both the state-transition probabilities and the reward distribution.
 
-\subsubsection{Model-free learning}\label{sec:model-free-learning}
+\textbf{Types}: Distribution models, Sample models.
 
-Learning directly from raw experience without a model of the environment’s dynamics.
+The estimates of the MDP's dynamics \psecref{sec:mdp-dynamics} is a distribution model.
 
 \subsubsection{Model-based learning}
 
 Learning from a model of the environment’s dynamics, i.e., need \( p(s', r \mid s, a) \).
+
+Rely on \textit{planning} as their primary component.
+
+\subsubsection{Model-free learning}\label{sec:model-free-learning}
+
+Learning directly from raw experience without a model of the environment’s dynamics.
+
+Rely on \textit{learning} as their primary component.
 
 \subsubsection{Off-policy learning}
 
@@ -310,3 +324,11 @@ Are often of greater variance and are slower to converge.
 \subsubsection{On-policy learning}
 
 \textit{On-policy} methods estimates the value of the current policy \( \pi \) and improves it by using the same policy to generate the episodes, i.e., the behavior policy is the same as the target policy.
+
+\subsubsection{Model learning}
+
+Planning agent is used to improve the model, to make it more accurately match the real environment.
+
+\subsubsection{Direct reinforcement learning (Direct RL)}
+
+Planning agent is used to directly improve the value function and policy.
